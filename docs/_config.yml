@@ -1,8 +1,7 @@
-title: Digital Controller
-email: your-email@example.com
-logo: /assets/images/dcc.png
+title: "Digital Controller"
 github_username:  sfawcett123
 heading_anchors: true
+search_enabled: false  
 
 # Build settings
 remote_theme: pmarsceill/just-the-docs
