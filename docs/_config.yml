@@ -6,5 +6,3 @@ heading_anchors: true
 
 # Build settings
 remote_theme: pmarsceill/just-the-docs
-
-theme: jekyll-theme-cayman
