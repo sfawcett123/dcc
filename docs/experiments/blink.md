@@ -1,10 +1,18 @@
 ---
-title: Blink 
+layout: default
+title: Blink
 nav_order: 10
+parent: Experiments
 ---
 
-# BLINK 
+# BLINK RX Light 
+{: .no_toc }
 
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
 
 ## Requirements
 
@@ -15,9 +23,10 @@ nav_order: 10
 
 To test and document the interface between an Arduino board and Python using the Serial port.
 
-## [Repository]( https://github.com/sfawcett123/dcc/tree/main/python/blink)
+## Repositories
+* [Python]( https://github.com/sfawcett123/dcc/tree/main/python/blink)
 
-## Expected Results
+## Process
 
 * Run the 'arduino-cli board list' to get the boards port.
 * Edit the script to input the PORT
