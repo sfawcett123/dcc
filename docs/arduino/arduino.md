@@ -4,10 +4,17 @@ nav_order: 10
 ---
 
 # Arduino 
+{: .no_toc }
 
 ([Arduino home page](https://www.arduino.cc/))
 
 Arduino is an open-source electronics platform based on easy-to-use hardware and software. Arduino boards are able to read inputs and turn it into an output.
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
 
 ## Requirements
 
@@ -66,6 +73,35 @@ Port                            Protocol Type              Board Name           
 /dev/cu.Bluetooth-Incoming-Port serial   Unknown
 /dev/cu.DOSSSoundBox-SerialPort serial   Unknown
 /dev/cu.usbmodem14201           serial   Serial Port (USB) Arduino Mega or Mega 2560 arduino:avr:mega arduino:avr
+```
+
+
+### Import Libraries
+
+There maybe a new library you are missing, so you will need to install it. the first thing to do is find out the exact name you are installing, In this example I need a LCD driver, so I search for:
+
+```
+❯ arduino-cli lib search --names liquid
+
+Name: "LcdProgressBar"
+Name: "LcdProgressBarDouble"
+Name: "Liquid Handling Robotics"
+Name: "LiquidCrystal"
+Name: "LiquidCrystal I2C"
+Name: "LiquidCrystal NKC"
+Name: "LiquidCrystalIO"
+Name: "LiquidCrystalWired"
+```
+
+I am sure it is LiquidCrystal so I can proceed to install that library
+
+```
+❯ arduino-cli lib install LiquidCrystal
+
+Downloading LiquidCrystal@1.0.7...
+LiquidCrystal@1.0.7 downloaded
+Installing LiquidCrystal@1.0.7...
+Installed LiquidCrystal@1.0.7
 ```
 
 ### Compile the sketch
