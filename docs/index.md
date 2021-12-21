@@ -1,14 +1,10 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
 title: home
 nav_order: 1
 layout: page
-
 ---
 
-# Digital Model Railway Controller.
+# Digital Model Railway Controller
 
 ## Problem
 
@@ -16,4 +12,5 @@ There are already Arduino boards working as DCC controllers, but I want to build
 
 ## Planned Solution
 
-A diagram will appear here one day
+![Outline Plan](OutLine.png)
+
