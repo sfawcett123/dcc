@@ -1,8 +1,8 @@
 ---
-layout: default
 title: Blink
 nav_order: 10
 parent: Experiments
+layout: page
 ---
 
 # BLINK RX Light 

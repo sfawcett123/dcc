@@ -1,8 +1,8 @@
 ---
 title: FastAPI 
 nav_order: 20
-layout: default
 parent: Python
+layout: page
 ---
 
 # FastAPI 

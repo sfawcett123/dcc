@@ -1,6 +1,7 @@
 ---
 title: Arduino 
 nav_order: 10
+layout: page
 ---
 
 # Arduino 

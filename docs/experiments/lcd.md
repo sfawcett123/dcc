@@ -1,8 +1,8 @@
 ---
-layout: default
 title: LCD
 nav_order: 20
 parent: Experiments
+layout: page
 ---
 
 # Liquid Crystal Display 

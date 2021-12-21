@@ -1,7 +1,7 @@
 ---
 title: LCD Simple Display 
 nav_order: 20
-layout: default
+layout: page
 parent: Circuits
 ---
 
