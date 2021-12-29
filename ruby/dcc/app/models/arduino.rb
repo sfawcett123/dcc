@@ -2,7 +2,6 @@ require "libusb"
 
 class Arduino 
     include ActiveModel::Model
-    attr_accessor :name, :port
 
     def persisted?
       false
@@ -10,9 +9,8 @@ class Arduino
 
     class << self
         def all
-          dev = []
           usb = LIBUSB::Context.new
-          return usb.devices
+          return usb.devices(idVendor: 9025)
         end
     end
 

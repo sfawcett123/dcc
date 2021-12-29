@@ -3,7 +3,10 @@
       <thead>
             <tr>
               <th>Manufacturer</th>
+              <th>Vendor</th>
               <th>Product</th>
+              <th>Serial Number </th>
+              <th>Class</th>
               <th>Status</th>
             </tr>
       </thead>
@@ -11,7 +14,10 @@
   <% @arduinos.each do |arduino| %>
     <tr>
       <td><%= arduino.manufacturer %></td>
+      <td><%= arduino.idVendor %></td>
       <td><%= arduino.product%> </td>
+      <td><%= arduino.serial_number%> </td>
+      <td><%= arduino.bDeviceClass%> </td>
       <td><a href="#" class="btn btn-success">OK</a></td>
     </tr>
   <% end %>
