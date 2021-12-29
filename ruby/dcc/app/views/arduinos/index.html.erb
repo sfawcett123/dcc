@@ -1,14 +1,22 @@
-<p style="color: green"><%= notice %></p>
 
-<h1>Arduinos</h1>
-
-<div id="arduinos">
+  <table class="table" >
+      <thead>
+            <tr>
+              <th>Manufacturer</th>
+              <th>Product</th>
+              <th>Status</th>
+            </tr>
+      </thead>
+      <tbody>
   <% @arduinos.each do |arduino| %>
-    <%= render arduino %>
-    <p>
-      <%= link_to "Show this arduino", arduino %>
-    </p>
+    <tr>
+      <td><%= arduino.manufacturer %></td>
+      <td><%= arduino.product%> </td>
+      <td><a href="#" class="btn btn-success">OK</a></td>
+    </tr>
   <% end %>
-</div>
+      </tbody>
+  </table>
 
-<%= link_to "New arduino", new_arduino_path %>
+
+

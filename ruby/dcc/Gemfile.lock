@@ -86,6 +86,10 @@ GEM
     diff-lcs (1.5.0)
     docile (1.4.0)
     erubi (1.10.0)
+    ffi (1.15.4)
+    ffi (1.15.4-java)
+    ffi (1.15.4-x64-mingw32)
+    ffi (1.15.4-x86-mingw32)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.8.11)
@@ -99,6 +103,13 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    libusb (0.6.4)
+      ffi (~> 1.0)
+      mini_portile2 (~> 2.1)
+    libusb (0.6.4-x64-mingw32)
+      ffi (~> 1.0)
+    libusb (0.6.4-x86-mingw32)
+      ffi (~> 1.0)
     loofah (2.13.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -265,6 +276,7 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
+  libusb
   puma (~> 5.0)
   rails (~> 7.0.0)
   redis (~> 4.0)

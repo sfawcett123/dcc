@@ -5,8 +5,11 @@
    <head>
       <meta http-equiv = "Content-Type" content = "text/html; charset = iso-8859-1" />
       <meta http-equiv = "Content-Language" content = "en-us" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
       <title>Digital Command Control</title>
       <%= stylesheet_link_tag "style" %>
+
    </head>
 
    <body id = "library">    
@@ -14,28 +17,30 @@
             <h1>Digital Command Control</h1>
          </div>
 
-         <div class="row">
-            <div id = "leftSidebar"> 
-                <ol style="list-style-type:none;">
-                    <li>Arduino</li>
-                    <ul>
-                        <li>New</li>
-                        <li>Query</li>
-                    </ul>
-                </ol>  
+         <div class="page">
+            <div id = "leftSidebar" class="leftSidebar"> 
+                <table >
+                    <thead>
+                        <tr><td>MENU-1</td></tr>
+                        <tr><td>MENU-2</td></tr>
+                        <tr><td>MENU-3</td></tr>
+                    </thead>
+                </table>
             </div>
 
             <div id = "content">
-                <%= yield %>
+            
+                <div id = "yield">
+                    <%= yield %>
+                </div>
+
+                <div id = "status">
+                    <p style="background: green">Something Important <%= notice %></p>
+                </div>
+
             </div>
 
-            <div id = "rightSidebar"> 
-                <ul style="list-style-type:none;">
-                    <li>Coffee</li>
-                    <li>Tea</li>
-                    <li>Milk</li>
-                </ul>  
-            </div>
+            
         </div>
    </body>
    
