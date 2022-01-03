@@ -14,12 +14,12 @@
       <tbody>
   <% @arduinos.each do |arduino| %>
     <tr>
-      <td><%= arduino["port"]["address"] %> </td>
+      <td><%= arduino.port %> </td>
       <td><%= arduino %> </td>
       <td><%= arduino %> </td>
-      <td><%= arduino["port"]["address"] %> </td>
-      <td><%= arduino["port"]["address"] %> </td>
-      <td><%= arduino["port"]["address"] %> </td>
+      <td><%= arduino %> </td>
+      <td><%= arduino %> </td>
+      <td><%= arduino.matching_boards %> </td>
       <td><a href="#" class="btn btn-success">OK</a></td>
     </tr>
   <% end %>

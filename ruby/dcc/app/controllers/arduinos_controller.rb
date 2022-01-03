@@ -5,14 +5,17 @@ class ArduinosController < ApplicationController
 
   # GET /arduinos or /arduinos.json
   def index
+    Arduino.destroy
+    create()
     @arduinos = Arduino.all
   end
 
   def create
     commandString = "arduino-cli board list --format json"
     devices = %x[ #{commandString} ]
-    devices.each do | device |
+    JSON.parse( devices).each do | device |
       @arduino = Arduino.new( device )
+      puts @arduino
     end
   end
 
