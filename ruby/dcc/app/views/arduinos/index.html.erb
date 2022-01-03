@@ -2,6 +2,7 @@
   <table class="table" >
       <thead>
             <tr>
+              <th>Device</th>
               <th>Manufacturer</th>
               <th>Vendor</th>
               <th>Product</th>
@@ -13,11 +14,12 @@
       <tbody>
   <% @arduinos.each do |arduino| %>
     <tr>
-      <td><%= arduino.manufacturer %></td>
-      <td><%= arduino.idVendor %></td>
-      <td><%= arduino.product%> </td>
-      <td><%= arduino.serial_number%> </td>
-      <td><%= arduino.bDeviceClass%> </td>
+      <td><%= arduino["port"]["address"] %> </td>
+      <td><%= arduino %> </td>
+      <td><%= arduino %> </td>
+      <td><%= arduino["port"]["address"] %> </td>
+      <td><%= arduino["port"]["address"] %> </td>
+      <td><%= arduino["port"]["address"] %> </td>
       <td><a href="#" class="btn btn-success">OK</a></td>
     </tr>
   <% end %>

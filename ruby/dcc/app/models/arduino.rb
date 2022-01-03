@@ -1,7 +1,11 @@
-require "libusb"
-
-class Arduino 
+class Arduino
     include ActiveModel::Model
+
+    def initialize(attributes = {})
+      attributes.each do |name, value|
+        send("#{name}=", value)
+      end
+    end
 
     def persisted?
       false
@@ -9,8 +13,7 @@ class Arduino
 
     class << self
         def all
-          usb = LIBUSB::Context.new
-          return usb.devices(idVendor: 9025)
+          return []
         end
     end
 

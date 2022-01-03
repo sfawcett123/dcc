@@ -8,6 +8,14 @@ class ArduinosController < ApplicationController
     @arduinos = Arduino.all
   end
 
+  def create
+    commandString = "arduino-cli board list --format json"
+    devices = %x[ #{commandString} ]
+    devices.each do | device |
+      @arduino = Arduino.new( device )
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_arduino
