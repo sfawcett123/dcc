@@ -19,7 +19,7 @@ layout: page
 * [Install arduino-cli and configure](/arduino.md)
 
 ## Install
-[Milliseconds Sketch](../../..//dcc/arduino/sketchs/Milliseconds/Milliseconds.ino)
+[Milliseconds Sketch](https://github.com/sfawcett123/dcc/tree/main/arduino/sketchs/Milliseconds)
 
 ## Purpose
 
