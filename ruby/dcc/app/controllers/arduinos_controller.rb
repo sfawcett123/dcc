@@ -10,6 +10,8 @@ class ArduinosController < ApplicationController
       @arduino = Arduino.new( device )
     end
     @arduinos = Arduino.boards
+    @data = @arduinos[0].read if @arduinos[0]
+    puts @data
   end
 
 end
