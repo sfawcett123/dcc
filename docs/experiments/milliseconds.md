@@ -5,7 +5,7 @@ parent: Experiments
 layout: page
 ---
 
-# Send Time Running back to Serial Port
+# Send Time to Serial Port
 {: .no_toc }
 
 ## Table of contents
