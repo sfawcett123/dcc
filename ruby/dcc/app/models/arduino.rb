@@ -3,23 +3,13 @@ class Arduino
    include ActiveModel::Model
 
    @vendorId="0x2341"
-   @@_arduinos = []
    @sp = nil
 
-   def initialize(attributes = {} , list=true )
-       attributes.each do |name, value|
-           if value.is_a? Hash
-             initialize(value , false )
-           elsif value.is_a? Array
-             value.each do |n|
-                 initialize(n , false )
-             end
-           else
-             self.class.send(:attr_accessor, name)
-             instance_variable_set( "@#{name}" , value)
-           end
-      end
-      @@_arduinos << self if list
+   def initialize(attributes = {} )
+      @redis = Redis.new(host: "localhost")
+      @logger = Rails.logger
+      data = Marshal.dump( attributes )
+      @redis.lpush "arduinos" , data
    end
 
    def open
@@ -46,14 +36,23 @@ class Arduino
 
    class << self
       def boards
-        begin
-           return @@_arduinos.select { |n| n.vid == @vendorId } 
-        rescue 
-           return []
-        end      
+           rVal = [] 
+           logger = Rails.logger
+           redis = Redis.new(host: "localhost")
+
+           logger.info "Fetching list of arduinos from Redis"
+           data = redis.lrange( "arduinos", 0, -1 )
+           data.each do | row | 
+                popped_row = Marshal.load( row )
+                rVal << JSON.parse( popped_row.to_json )
+           end
+           logger.debug "Redis returns #{rVal}"
+           return  rVal
       end
+
       def destroy()
-        @@_arduinos = []
+           redis = Redis.new(host: "localhost")
+           redis.del( "arduinos")
       end
    end
 

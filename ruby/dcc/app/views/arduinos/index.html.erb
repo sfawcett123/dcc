@@ -12,11 +12,11 @@
       <tbody>
   <% @arduinos.each do |arduino| %>
     <tr>
-      <td><%= arduino.name %> </td>
-      <td><%= arduino.label %> </td>
-      <td><%= arduino.serialNumber %> </td>
-      <td><%= arduino.pid %> </td>
-      <td><%= arduino.vid %> </td>
+      <td><%= arduino.fetch('port').fetch('name'         , '') %> </td>
+      <td><%= arduino.fetch('port').fetch('label'        , '') %> </td>
+      <td><%= arduino.fetch('port').fetch('serialNumber' , '') %> </td>
+      <td><%= arduino.fetch('port').fetch('pid'          , '') %> </td>
+      <td><%= arduino.fetch('port').fetch('vid'          , '') %> </td>
       <td><a href="#" class="btn btn-success">OK</a></td>
     </tr>
   <% end %>
