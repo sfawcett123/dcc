@@ -1,9 +1,28 @@
+
+class Larduino
+   def initialize(attributes = {} , list=true )
+       attributes.each do |name, value|
+           if value.is_a? Hash
+             initialize(value , false )
+           elsif value.is_a? Array
+             value.each do |n|
+                 initialize(n , false )
+             end
+           else
+             self.class.send(:attr_accessor, name)
+             instance_variable_set( "@#{name}" , value)
+           end
+      end
+   end
+end
+
 class Arduino
 
    include ActiveModel::Model
 
    @vendorId="0x2341"
    @sp = nil
+
 
    def initialize(attributes = {} )
       @redis = Redis.new(host: "localhost")
@@ -44,7 +63,7 @@ class Arduino
            data = redis.lrange( "arduinos", 0, -1 )
            data.each do | row | 
                 popped_row = Marshal.load( row )
-                rVal << JSON.parse( popped_row.to_json )
+                rVal << Larduino.new( JSON.parse( popped_row.to_json ) )
            end
            logger.debug "Redis returns #{rVal}"
            return  rVal

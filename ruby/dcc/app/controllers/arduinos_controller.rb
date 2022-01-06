@@ -6,7 +6,7 @@ class ArduinosController < ApplicationController
     logger.info "Reading boards from redis"
     @arduinos = Arduino.boards 
 
-    logger.debug "#{@arduinos}"
+    logger.info "Attributes #{@arduinos[0].inspect}"
     # @data = @arduinos[0].read if @arduinos[0]
   end
 
