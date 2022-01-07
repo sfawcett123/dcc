@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ArduinosController < ApplicationController
-  before_action :set_arduino, only: %i[ write read ]
+  before_action :set_arduino, only: %i[write read]
 
   # GET /arduinos
   def list
@@ -23,13 +25,14 @@ class ArduinosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_arduino
-      @arduino = Arduino.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def arduino_params
-      params.fetch(:arduino, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_arduino
+    @arduino = Arduino.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def arduino_params
+    params.fetch(:arduino, {})
+  end
 end
