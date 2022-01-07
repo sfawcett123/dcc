@@ -1,25 +1,23 @@
+# frozen_string_literal: true
+
 class ArduinoWorker
   include Sidekiq::Worker
 
-  def perform(*args)
+  def perform(*_args)
+    USB.destroy
 
+    logger.info 'Getting list of boards'
 
-    Arduino.destroy
+    command = 'arduino-cli board list --format json'
 
-    logger.info "Getting list of boards"
+    devices = `#{command}`
 
-    commandString = "arduino-cli board list --format json"
-
-    devices = %x[ #{commandString} ]
-
-    JSON.parse( devices).each do | device |
-      logger.info "Device Found"
-      logger.debug "#{device}"
-      arduino = Arduino.new( device )
+    JSON.parse(devices).each do |device|
+      logger.info 'Device Found'
+      logger.debug device.to_s
+      USB.new(device)
     end
 
     ArduinoWorker.perform_in(10.seconds)
-
   end
-
 end

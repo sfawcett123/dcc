@@ -1,0 +1,2 @@
+class Usb < ApplicationRecord
+end
