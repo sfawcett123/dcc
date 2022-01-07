@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   get 'arduinos' , action: :list, controller: 'arduinos' , :format => false
-  post 'arduinos/read'
-  get 'arduinos/write'
+  post 'arduino/read' , action: :read, controller: 'arduinos'  
+  get 'arduino/write', action: :write, controller: 'arduinos'  
 
   get 'usbs' , action: :list, controller: 'usbs' ,  :format => false
 

@@ -21,10 +21,10 @@ USBAPI is a simple API which will provide:
 
 ## URL list
 1. Provide a JSON response giving a list of boards
-	2. 	GET \<hostname>/usb/List	
+	2. 	GET \<hostname>/usbs	
 2. Provide a JSON response POPPING last message from board
-	3. GET \<hostname>/usb/<board>	
+	3. GET \<hostname>/arduino/<board>	
 3. Provide a JSON action PUSHING a a message to a board
-	4. PUT \<hostname>/usb/<board>/message	
+	4. PUT \<hostname>/arduino/<board>/message	
 	
 
