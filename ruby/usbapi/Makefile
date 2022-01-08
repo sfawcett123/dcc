@@ -4,17 +4,15 @@ fix:
 rubocop:
 	rubocop
 
-rspec:
-	bundle exec rspec
-
 brakeman:
 	brakeman -q
 
-test:	rubocop rspec brakeman
+test:	rubocop brakeman
 
 run:
 	rails server
 
 
 background:
+	redis-cli --scan --pattern users: * | xargs redis-cli del
 	bundle exec sidekiq
