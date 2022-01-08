@@ -11,6 +11,7 @@ class ListusbWorker
 
     JSON.parse(devices).each do |device|
       logger.info "Device Found #{device['port']['address']} "
+      Usb.new(device: device)
     end
 
     already_scheduled = Sidekiq::ScheduledSet.new.any? { |job| job.klass == 'ListusbWorker' }

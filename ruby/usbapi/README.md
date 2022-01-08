@@ -28,3 +28,8 @@ USBAPI is a simple API which will provide:
 	4. PUT \<hostname>/arduino/<board>/message	
 	
 
+## Assistance
+
+### Add Columns to tables
+     rails g migration add_fields_to_usb label:string
+     rails db:migrate
