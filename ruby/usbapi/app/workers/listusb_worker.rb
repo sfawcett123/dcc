@@ -10,9 +10,12 @@ class ListusbWorker
     devices = `#{command}`
 
     JSON.parse(devices).each do |device|
-      logger.info "Device Found #{device['port']['address']} "
-      device = Usb.new(device)
-      device.save()
+      Usb.where( :label => device['port']['label'] ).first_or_create do | dev |
+           dev.address = device['port']['address']
+           dev.label = device['port']['label']
+           dev.save()
+           logger.info "Device record created #{dev.label}"
+      end
     end
 
     ListusbWorker.perform_in(10.seconds)
