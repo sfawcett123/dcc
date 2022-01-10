@@ -12,11 +12,11 @@
       <tbody>
   <% @arduinos.each do |arduino| %>
     <tr>
-      <td><%= arduino.name %> </td>
       <td><%= arduino.label %> </td>
-      <td><%= arduino.serialNumber %> </td>
-      <td><%= arduino.pid %> </td>
-      <td><%= arduino.vid %> </td>
+      <td><%= arduino.address %> </td>
+      <td><%= arduino.label %> </td>
+      <td><%= arduino.label %> </td>
+      <td><%= arduino.label %> </td>
       <td><a href="#" class="btn btn-success">OK</a></td>
     </tr>
   <% end %>

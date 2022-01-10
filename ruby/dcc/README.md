@@ -3,22 +3,32 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+## Ruby version
 
-* Ruby version
+## System dependencies
 
-* System dependencies
+## Configuration
 
-* Configuration
+## Redis
 
-* Database creation
+### Install
+```
+brew install redis
+```
 
-* Database initialization
+### Start
+```
+brew services start redis
+```
+### Stop
+```
+brew services stop redis
+```
 
-* How to run the test suite
+## Sidekiq
 
-* Services (job queues, cache servers, search engines, etc.)
+### Start
+```
+bundle exec sidekiq
+```
 
-* Deployment instructions
-
-* ...

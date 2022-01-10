@@ -14,3 +14,7 @@ test:	rubocop rspec brakeman
 
 run:
 	rails server
+
+
+background:
+	bundle exec sidekiq
