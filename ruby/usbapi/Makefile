@@ -18,3 +18,6 @@ connect:
 background:
 	redis-cli --scan --pattern users: * | xargs redis-cli del
 	bundle exec sidekiq
+
+curl:
+        curl -X PATCH "http://localhost:3000/arduino/959313231323513171B1?role=sausage""

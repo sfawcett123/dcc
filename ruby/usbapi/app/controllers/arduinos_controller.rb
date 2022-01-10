@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class ArduinosController < ApplicationController
-  before_action :set_arduino, only: %i[write read]
+  before_action :set_arduino, only: %i[update]
+  after_action :save_arduino, only: %i[update]
+
 
   # GET /arduinos
   def list
@@ -16,23 +18,24 @@ class ArduinosController < ApplicationController
   end
 
   # PATCH/PUT /arduinos/1
-  def write
-    if @arduino.update(arduino_params)
-      render json: @arduino
-    else
-      render json: @arduino.errors, status: :unprocessable_entity
-    end
+  def update
+    @arduino.role = params[:role]
+    render json: @arduino
   end
 
   private
 
+  def save_arduino
+      @arduino.save
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_arduino
-    @arduino = Arduino.find(params[:id])
+    @arduino = Arduino.all.select { |b| b.serialnumber = params[:serialnumber] }.first
   end
 
   # Only allow a list of trusted parameters through.
   def arduino_params
-    params.fetch(:arduino, {})
+    params.permit(:role , :serialnumber )
   end
 end
