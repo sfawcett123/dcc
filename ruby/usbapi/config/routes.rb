@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get 'usbs', action: :list, controller: 'usbs', format: false
 
+  get 'roles', action: :list, controller: 'roles', format: false
+
   mount Sidekiq::Web => '/sidekiq'
 
   # Defines the root path route ("/")

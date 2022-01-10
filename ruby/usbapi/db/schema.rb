@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_10_121511) do
+ActiveRecord::Schema.define(version: 2022_01_10_153431) do
 
   create_table "arduinos", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(version: 2022_01_10_121511) do
     t.string "vid"
     t.string "fqbn"
     t.string "name"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "usbs", force: :cascade do |t|

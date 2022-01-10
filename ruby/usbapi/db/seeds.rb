@@ -4,5 +4,10 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+roles_list = [
+  "Locomotive DCC" 
+]
+
+roles_list.each do |name|
+  Role.create( name: name )
+end
