@@ -15,11 +15,13 @@ USBAPI is a simple API which will provide:
 
 
 ## Background Task List
+
 1. Create a call that returns a list of connected Arduino boards, key by serial number
 	2. Store the board list and periodically update its status ( online / offline )
 	3. Identify which board is connected to which port and store that information
 
 ## URL list
+
 1. Provide a JSON response giving a list of boards
 	2. 	GET \<hostname>/usbs	
 2. Provide a JSON response POPPING last message from board
