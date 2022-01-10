@@ -4,43 +4,51 @@ class ListusbWorker
   include Sidekiq::Worker
 
   def perform(*_args)
-    connected_devices.each do |device|
-      add_usb_device device
-      add_board device if device.attached_board?
-    end
+    remove
+    record
     ListusbWorker.perform_in(10.seconds)
   end
 
   private
 
-  def connected_devices
-    command = 'arduino-cli board list --format json'
-    devices = `#{command}`
-    JSON.parse(devices, object_class: OpenStruct)
+  def remove
+    Usb.connected.each do |dev|
+      disconnect dev if Boards.not_connected? dev.serialnumber
+      logger.info "Device disconnected #{dev.label}" if dev.changed?
+    end
+  end
+
+  def record
+    Boards.connected.each do |device|
+      add_usb_device device
+      add_board device
+    end
   end
 
   def add_usb_device(device)
-    Usb.where(label: device.port.label).first_or_create do |dev|
+    Usb.where(label: device.port.label).first_or_create.tap do |dev|
       dev.address = device.port.address
       dev.label = device.port.label
+      dev.serialnumber = device.port.properties.serialNumber
+      logger.info "Device record created #{dev.label}" if dev.changed?
       dev.save
-      logger.info "Device record created #{dev.label}"
     end
   end
 
   def add_board(device)
-    add_arduino device if device.arduino?
-  end
-
-  def add_arduino(device)
-    Arduino.where(serialnumber: device.port.properties.serialNumber).first_or_create do |dev|
+    Arduino.where(serialnumber: device.port.properties.serialNumber).first_or_create.tap do |dev|
       dev.serialnumber = device.port.properties.serialNumber
       dev.pid = device.port.properties.pid
       dev.vid = device.port.properties.vid
       dev.fqbn = device.matching_boards.first.fqbn
       dev.name = device.matching_boards.first.name
+      logger.info "Arduino record created #{dev.serialnumber}" if dev.changed?
       dev.save
-      logger.info "Arduino record created #{dev.serialnumber}"
     end
+  end
+
+  def disconnect(dev)
+    dev.serialnumber = nil
+    dev.save
   end
 end
