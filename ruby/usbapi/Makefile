@@ -12,6 +12,13 @@ test:	rubocop brakeman
 run:
 	rails server
 
+rebuild:
+	bundle install
+	rails db:drop
+	rails db:create
+	rails db:schema:load
+	rails db:seed
+
 connect:
 	sqlite3 db/development.sqlite3
 

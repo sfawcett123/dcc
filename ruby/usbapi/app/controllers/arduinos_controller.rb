@@ -5,7 +5,6 @@ class ArduinosController < ApplicationController
   before_action :check_role, only: %i[update]
   after_action :save_arduino, only: %i[update]
 
-
   # GET /arduinos
   def list
     @arduinos = Arduino.all
@@ -31,7 +30,7 @@ class ArduinosController < ApplicationController
   end
 
   def save_arduino
-      @arduino.save
+    @arduino.save
   end
 
   # Use callbacks to share common setup or constraints between actions.
@@ -41,6 +40,6 @@ class ArduinosController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def arduino_params
-    params.permit(:role , :serialnumber )
+    params.permit(:role, :serialnumber)
   end
 end
