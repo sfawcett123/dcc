@@ -2,6 +2,7 @@
 
 class ArduinosController < ApplicationController
   before_action :set_arduino, only: %i[update]
+  before_action :check_role, only: %i[update]
   after_action :save_arduino, only: %i[update]
 
 
@@ -19,11 +20,15 @@ class ArduinosController < ApplicationController
 
   # PATCH/PUT /arduinos/1
   def update
-    @arduino.role = params[:role]
+    @arduino.role_id = params[:role]
     render json: @arduino
   end
 
   private
+
+  def check_role
+    logger.info "Checking Role #{params[:role]}"
+  end
 
   def save_arduino
       @arduino.save

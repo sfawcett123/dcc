@@ -9,5 +9,5 @@ roles_list = [
 ]
 
 roles_list.each do |name|
-  Role.create( name: name )
+  Role.create( role: name )
 end

@@ -10,31 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_10_190903) do
+ActiveRecord::Schema.define(version: 2022_01_11_112502) do
 
   create_table "arduinos", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "serialnumber"
+    t.string "serialnumber" 
     t.string "pid"
     t.string "vid"
     t.string "fqbn"
     t.string "name"
-    t.string "role"
+    t.integer "role_id"
   end
 
-  create_table "roles", force: :cascade do |t|
-    t.string "name"
+  create_table "roles", force: :cascade  do |t|
+    t.string "role" 
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "usbs", force: :cascade do |t|
     t.string "label"
-    t.string "address"
+    t.string "address" 
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "serialnumber"
   end
+
+  add_foreign_key :arduinos, :roles
 
 end
