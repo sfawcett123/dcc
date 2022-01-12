@@ -14,4 +14,7 @@ Rails.application.routes.draw do
 
   mount Sidekiq::Web => '/sidekiq'
 
+  namespace :errors do
+      resource :not_found, controller: :not_registered, only: :show
+  end
 end
