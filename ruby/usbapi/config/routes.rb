@@ -3,18 +3,8 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  get 'arduinos', action: :list, controller: 'arduinos', format: false
-
-  get 'arduino/read', action: :read, controller: 'arduinos'
-  patch 'arduino/:serialnumber', action: :update, controller: 'arduinos'
-
-  get 'usbs', action: :list, controller: 'usbs', format: false
-
-  get 'roles', action: :list, controller: 'roles', format: false
-
+  resources :roles
+  resources :arduinos
+  resources :usbs
   mount Sidekiq::Web => '/sidekiq'
-
-  namespace :errors do
-      resource :not_found, controller: :not_registered, only: :show
-  end
 end

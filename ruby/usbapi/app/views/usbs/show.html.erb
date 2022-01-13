@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @usb %>
+
+<div>
+  <%= link_to "Edit this usb", edit_usb_path(@usb) %> |
+  <%= link_to "Back to usbs", usbs_path %>
+
+  <%= button_to "Destroy this usb", @usb, method: :delete %>
+</div>

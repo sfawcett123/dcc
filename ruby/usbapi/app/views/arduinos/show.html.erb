@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @arduino %>
+
+<div>
+  <%= link_to "Edit this arduino", edit_arduino_path(@arduino) %> |
+  <%= link_to "Back to arduinos", arduinos_path %>
+
+  <%= button_to "Destroy this arduino", @arduino, method: :delete %>
+</div>

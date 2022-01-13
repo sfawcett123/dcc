@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Usbs</h1>
+
+<div id="usbs">
+  <% @usbs.each do |usb| %>
+    <%= render usb %>
+    <p>
+      <%= link_to "Show this usb", usb %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New usb", new_usb_path %>

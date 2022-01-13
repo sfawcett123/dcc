@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-class ListusbWorker
-  include Sidekiq::Worker
+class ScanPortsJob < ApplicationJob
+  queue_as :default
 
   def perform(*_args)
     remove
     record
-    ListusbWorker.perform_in(10.seconds)
+    ScanPortsJob.set( wait: 10.seconds).perform_later
   end
 
   private

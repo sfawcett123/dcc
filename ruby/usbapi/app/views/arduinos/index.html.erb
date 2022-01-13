@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Arduinos</h1>
+
+<div id="arduinos">
+  <% @arduinos.each do |arduino| %>
+    <%= render arduino %>
+    <p>
+      <%= link_to "Show this arduino", arduino %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New arduino", new_arduino_path %>

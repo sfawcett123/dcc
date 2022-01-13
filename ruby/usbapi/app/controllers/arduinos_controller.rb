@@ -1,57 +1,71 @@
 # frozen_string_literal: true
 
 class ArduinosController < ApplicationController
-  before_action :set_arduino, only: %i[update]
-  before_action :check_role, only: %i[update]
-  after_action :save_arduino, only: %i[update]
+  before_action :set_arduino, only: %i[show edit update destroy]
 
-  # GET /arduinos
-  def list
+  # GET /arduinos or /arduinos.json
+  def index
     @arduinos = Arduino.all
-
-    render json: @arduinos
   end
 
-  # GET /arduinos/1
-  def read
-    render json: @arduino
+  # GET /arduinos/1 or /arduinos/1.json
+  def show; end
+
+  # GET /arduinos/new
+  def new
+    @arduino = Arduino.new
   end
 
-  # PATCH/PUT /arduinos/1
+  # GET /arduinos/1/edit
+  def edit; end
+
+  # POST /arduinos or /arduinos.json
+  def create
+    @arduino = Arduino.new(arduino_params)
+
+    respond_to do |format|
+      if @arduino.save
+        format.html { redirect_to arduino_url(@arduino), notice: 'Arduino was successfully created.' }
+        format.json { render :show, status: :created, location: @arduino }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @arduino.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /arduinos/1 or /arduinos/1.json
   def update
-    @arduino.role_id = params[:role]
-    render json: @arduino
+    respond_to do |format|
+      if @arduino.update(arduino_params)
+        format.html { redirect_to arduino_url(@arduino), notice: 'Arduino was successfully updated.' }
+        format.json { render :show, status: :ok, location: @arduino }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @arduino.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /arduinos/1 or /arduinos/1.json
+  def destroy
+    @arduino.destroy
+
+    respond_to do |format|
+      format.html { redirect_to arduinos_url, notice: 'Arduino was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
 
-  def check_role
-    raise_error duplicate_parameter if params.key?(:id) && params.key?(:role)
-  end
-
-  def save_arduino
-    @arduino.save
-  end
-
-  def raise_error(message)
-    render json: message, status: 400
-  end
-
+  # Use callbacks to share common setup or constraints between actions.
   def set_arduino
-    @arduino = Arduino.all.select { |b| b.serialnumber = params[:serialnumber] }.first
-    raise_error no_data_found if @arduino.nil?
+    @arduino = Arduino.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def arduino_params
-    params.permit(:role, :serialnumber)
-  end
-
-  def no_data_found
-    { error: 'No Arduinos; Plug in an Arduino board', status: 400 }
-  end
-
-  def duplicate_parameter
-    { error: 'Too many values; Update can only use one parameter', status: 400 }
+    params.require(:arduino).permit(:serialnumber, :pid, :vid, :fqbn, :name, :role_id)
   end
 end

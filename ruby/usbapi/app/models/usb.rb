@@ -5,5 +5,5 @@ class Usb < ApplicationRecord
     def connected
       all.select(&:serialnumber)
     end
-end
+  end
 end
