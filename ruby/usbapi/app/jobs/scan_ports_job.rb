@@ -6,7 +6,7 @@ class ScanPortsJob < ApplicationJob
   def perform(*_args)
     remove
     record
-    ScanPortsJob.set( wait: 10.seconds).perform_later
+    ScanPortsJob.set(wait: 10.seconds).perform_later
   end
 
   private

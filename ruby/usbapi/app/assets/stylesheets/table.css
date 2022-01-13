@@ -1,6 +1,4 @@
-:root {
---main-color: #000F89;
-}
+@import "common.css";
 
 .styled-table {
     border-collapse: collapse;
@@ -13,7 +11,7 @@
 
 .styled-table thead tr {
     background-color: var(--main-color);
-    color: #ffffff;
+    color: var(--text-color);
     text-align: left;
 }
 
@@ -23,11 +21,11 @@
 }
 
 .styled-table tbody tr {
-    border-bottom: thin solid #dddddd;
+    border-bottom: thin solid var(--text-color);
 }
 
 .styled-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
+    background-color: var(--text-color);
 }
 
 .styled-table tbody tr:last-of-type {
