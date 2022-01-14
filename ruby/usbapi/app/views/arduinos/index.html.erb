@@ -1,14 +1,32 @@
+<%= stylesheet_link_tag "table", "data-turbo-track": "reload" %>
+
 <p style="color: green"><%= notice %></p>
 
-<h1>Arduinos</h1>
-
-<div id="arduinos">
-  <% @arduinos.each do |arduino| %>
-    <%= render arduino %>
-    <p>
-      <%= link_to "Show this arduino", arduino %>
-    </p>
-  <% end %>
+<div id="roles" >
+    <table class="styled-table">
+      <thead>
+           <tr>
+            <th>Serial Number</th>
+            <th>PID</th>
+            <th>VID</th>
+            <th>FQBN</th>
+            <th>Name</th>
+            <th>Role</th>
+          </tr>
+      </thead>
+      <% @arduinos.each do |arduino| %>
+        <tbody>
+          <tr>
+              <td><%= arduino.serialnumber %></td>
+              <td><%= arduino.pid %></td>
+              <td><%= arduino.vid %></td>
+              <td><%= arduino.fqbn %></td>
+              <td><%= arduino.name %></td>
+              <td><%= arduino.role_id %></td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
 </div>
 
-<%= link_to "New arduino", new_arduino_path %>
+<%= link_to "New role", new_arduino_path %>

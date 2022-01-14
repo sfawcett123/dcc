@@ -1,14 +1,25 @@
+<%= stylesheet_link_tag "table", "data-turbo-track": "reload" %>
+
 <p style="color: green"><%= notice %></p>
 
-<h1>Usbs</h1>
-
-<div id="usbs">
-  <% @usbs.each do |usb| %>
-    <%= render usb %>
-    <p>
-      <%= link_to "Show this usb", usb %>
-    </p>
-  <% end %>
+<div id="roles" >
+    <table class="styled-table">
+      <thead>
+           <tr>
+            <th>Label</th>
+            <th>Address</th>
+            <th>Serial Number</th>
+          </tr>
+      </thead>
+      <% @usbs.each do |usb| %>
+        <tbody>
+          <tr><td><%= usb.label %></td>
+              <td><%= usb.address %></td>
+              <td><%= usb.serialnumber %></td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
 </div>
 
-<%= link_to "New usb", new_usb_path %>
+<%= link_to "New role", new_usb_path %>
