@@ -2,6 +2,7 @@
 
 class UsbsController < ApplicationController
   before_action :set_usb, only: %i[show edit update destroy]
+  before_action :set_title, only_member_actions: true
 
   # GET /usbs or /usbs.json
   def index
@@ -14,6 +15,10 @@ class UsbsController < ApplicationController
   # GET /usbs/new
   def new
     @usb = Usb.new
+  end
+
+  def set_title
+     @page_title = "USB Devices"
   end
 
   # GET /usbs/1/edit

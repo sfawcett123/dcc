@@ -2,6 +2,7 @@
 
 class ArduinosController < ApplicationController
   before_action :set_arduino, only: %i[show edit update destroy]
+  before_action :set_title, only_member_actions: true
 
   # GET /arduinos or /arduinos.json
   def index
@@ -10,6 +11,10 @@ class ArduinosController < ApplicationController
 
   # GET /arduinos/1 or /arduinos/1.json
   def show; end
+
+  def set_title
+     @page_title = "ARDUINOS"
+  end
 
   # GET /arduinos/new
   def new

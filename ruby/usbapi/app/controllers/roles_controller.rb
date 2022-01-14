@@ -2,6 +2,7 @@
 
 class RolesController < ApplicationController
   before_action :set_role, only: %i[show edit update destroy]
+  before_action :set_title, only_member_actions: true 
 
   # GET /roles or /roles.json
   def index
@@ -15,6 +16,10 @@ class RolesController < ApplicationController
   def new
     @role = Role.new
   end
+
+  def set_title
+     @page_title = "ROLES"
+  end 
 
   # GET /roles/1/edit
   def edit; end
