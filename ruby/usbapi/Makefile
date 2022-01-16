@@ -9,8 +9,12 @@ brakeman:
 
 test:	rubocop brakeman
 
-run:
+run:	assets
 	rails server
+
+assets:
+	rails assets:clean
+	rails assets:precompile
 
 rebuild:
 	bundle install
@@ -25,9 +29,6 @@ connect:
 background:
 	redis-cli --scan --pattern users: * | xargs redis-cli del
 	bundle exec sidekiq
-
-curl:
-	curl -X PATCH "http://localhost:3000/arduino/959313231323513171B1?role=sausage"
 
 erd:
 	bundle exec erd	
