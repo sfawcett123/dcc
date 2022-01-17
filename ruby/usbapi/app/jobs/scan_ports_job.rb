@@ -2,14 +2,18 @@
 
 class ScanPortsJob < ApplicationJob
   queue_as :default
+  before_perform :remove
+  after_perform  :schedule
 
   def perform(*_args)
-    remove
     record
-    ScanPortsJob.set(wait: 10.seconds).perform_later
   end
 
   private
+
+  def schedule
+    ScanPortsJob.set(wait: 10.seconds).perform_later
+  end
 
   def remove
     Usb.arduinos.each do |dev|
@@ -49,6 +53,7 @@ class ScanPortsJob < ApplicationJob
 
   def disconnect(dev)
     dev.serialnumber = nil
+    dev.connected = false
     dev.save
   end
 end

@@ -13,7 +13,7 @@ class ArduinosController < ApplicationController
   def show; end
 
   def set_title
-     @page_title = "ARDUINOS"
+    @page_title = 'ARDUINOS'
   end
 
   # GET /arduinos/new

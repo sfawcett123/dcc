@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsbsController < ApplicationController
-  before_action :set_usb, only: %i[toggle ]
+  before_action :set_usb, only: %i[toggle]
   before_action :set_title, only_member_actions: true
 
   # GET /usbs or /usbs.json
@@ -10,16 +10,17 @@ class UsbsController < ApplicationController
   end
 
   def toggle
-    logger.info "Toggle Action Selected"
-    @usb.connected = ! @usb.connected
+    logger.info 'Toggle Action Selected'
+    @usb.connected = !@usb.connected
     @usb.save
-    redirect_to usbs_path  
+    ReadArduinoJob.perform_later @usb if @usb.connected
+    redirect_to usbs_path
   end
 
   private
 
   def set_title
-     @page_title = "USB Devices"
+    @page_title = 'USB Devices'
   end
 
   # Use callbacks to share common setup or constraints between actions.

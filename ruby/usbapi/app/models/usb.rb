@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Usb < ApplicationRecord
-  def connected? 
-    @connected 
+  def connected?
+    @connected
   end
 
   class << self
