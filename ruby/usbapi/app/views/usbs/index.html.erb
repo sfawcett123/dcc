@@ -9,6 +9,7 @@
             <th>Label</th>
             <th>Address</th>
             <th>Serial Number</th>
+            <th></th>
           </tr>
       </thead>
       <% @usbs.each do |usb| %>
@@ -16,6 +17,7 @@
           <tr><td><%= usb.label %></td>
               <td><%= usb.address %></td>
               <td><%= usb.serialnumber %></td>
+              <td><i class="fa fa-link"></i></td>
           </tr>
         </tbody>
       <% end %>

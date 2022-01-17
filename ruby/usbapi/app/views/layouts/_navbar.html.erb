@@ -1,32 +1,22 @@
 <%= stylesheet_link_tag "navbar", "data-turbo-track": "reload" %>
 
 <nav class="navbar">
-   <span class="toggle-nav" id="toggle-nav">
-       <i class="material-icons">menu</i>
-   </span>
    <!-- <div class=""> -->
-      <a href="#" class="logo"><img src="logo.jpg" alt="">
+   <a href="#" class="logo"><img src="logo.jpg" alt="">
      <p>DCC : <%= @page_title %> </p>
    </a>
    <!-- </div> -->
    <div class="main-nav" id="main-nav">
        <div class="dropdown" >
-               <button class="dropbtn"><i class="fa fa-2x fa-bars"></i> </button>
+               <button class="nav-icon dropbtn"><i class="fa fa-2x fa-bars"></i> </button>
                <div class="dropdown-content">
                  <a href="<%=roles_path%>"> Roles</a>
                  <a href="<%=arduinos_path%>"> Arduinos</a>
                  <a href="<%=usbs_path%>">  USB Ports</a>
                </div>
        </div> 
-       <div class="nav-item" ><a href="#" class="nav-links"><i class="fa fa-2x fa-cog"></i></a></div>
-       <div class="nav-item" ><a href="#" class="nav-links"><i class="fa fa-2x fa-user"></i></a></div>
+       <div class="nav-item" ><a href="#" class="nav-icon nav-links"><i class="fa fa-2x fa-cog"></i></a></div>
+       <div class="nav-item" ><a href="#" class="nav-icon nav-links"><i class="fa fa-2x fa-user"></i></a></div>
    </div>
 </nav>
 
-<script>
-let mainNav = document.getElementById('main-nav');
-let toggleNav = document.getElementById('toggle-nav');
-toggleNav.addEventListener('click', function () {
-    mainNav.classList.toggle('active')
-});
-</script>
