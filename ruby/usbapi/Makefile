@@ -12,6 +12,9 @@ test:	rubocop brakeman
 run:
 	foreman start	
 
+clean:
+	git clean -fdx
+
 rebuild:
 	bundle install
 	rails db:drop
