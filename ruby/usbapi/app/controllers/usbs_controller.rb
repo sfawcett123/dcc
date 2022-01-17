@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsbsController < ApplicationController
-  before_action :set_usb, only: %i[show update ]
+  before_action :set_usb, only: %i[toggle ]
   before_action :set_title, only_member_actions: true
 
   # GET /usbs or /usbs.json
@@ -9,19 +9,12 @@ class UsbsController < ApplicationController
     @usbs = Usb.arduinos
   end
 
-  # PATCH/PUT /usbs/1 or /usbs/1.json
-  def update
-    respond_to do |format|
-      if @usb.update(usb_params)
-        format.html { redirect_to usb_url(@usb), notice: 'Usb was successfully updated.' }
-        format.json { render :show, status: :ok, location: @usb }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @usb.errors, status: :unprocessable_entity }
-      end
-    end
+  def toggle
+    logger.info "Toggle Action Selected"
+    @usb.connected = ! @usb.connected
+    @usb.save
+    redirect_to usbs_path  
   end
-
 
   private
 
