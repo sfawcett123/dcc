@@ -6,7 +6,7 @@ class UsbsController < ApplicationController
 
   # GET /usbs or /usbs.json
   def index
-    @usbs = Usb.all
+    @usbs = Usb.arduinos
   end
 
   # GET /usbs/1 or /usbs/1.json

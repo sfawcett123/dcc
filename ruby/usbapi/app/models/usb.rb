@@ -2,11 +2,11 @@
 
 class Usb < ApplicationRecord
   def connected? 
-    @serialnumber ? true : false
+    @connected 
   end
 
   class << self
-    def connected
+    def arduinos
       all.select(&:serialnumber)
     end
   end
