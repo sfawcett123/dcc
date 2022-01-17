@@ -12,7 +12,7 @@ class ScanPortsJob < ApplicationJob
   private
 
   def remove
-    Usb.connected.each do |dev|
+    Usb.arduinos.each do |dev|
       disconnect dev if Boards.not_connected? dev.serialnumber
       logger.info "Device disconnected #{dev.label}" if dev.changed?
     end
