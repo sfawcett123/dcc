@@ -34,14 +34,9 @@ body {
   border: none;
   outline: none;
   padding: 14px 16px;
-  color: var(--text-color);
-  background-color: inherit;
+  background-color: var(--main-color);
   font-family: inherit;
   margin: 0;
-}
-
-.navbar a:hover, .dropdown:hover .dropbtn {
-  color: yellow;
 }
 
 .dropdown-content {
@@ -81,6 +76,19 @@ body {
 .main-nav li {
     text-align: center;
     margin: 10px auto;
+}
+
+.fa  {
+  color: white;
+  background-color: inherit;
+  line-height: 40px;
+  padding: 0;
+  outline: none;
+  border: none;
+}
+
+.navbar fa:hover {
+  color: yellow;
 }
 
 .logo {
