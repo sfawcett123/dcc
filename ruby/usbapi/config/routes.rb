@@ -3,8 +3,12 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :roles
-  resources :arduinos
-  resources :usbs
+
+  get 'roles', to: 'roles#index'
+
+  get 'arduinos', to: 'arduinos#index'
+
+  get 'usbs', to: 'usbs#index'
+
   mount Sidekiq::Web => '/sidekiq'
 end

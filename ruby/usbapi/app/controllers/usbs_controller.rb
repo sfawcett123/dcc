@@ -1,42 +1,12 @@
 # frozen_string_literal: true
 
 class UsbsController < ApplicationController
-  before_action :set_usb, only: %i[show edit update destroy]
+  before_action :set_usb, only: %i[show update ]
   before_action :set_title, only_member_actions: true
 
   # GET /usbs or /usbs.json
   def index
     @usbs = Usb.arduinos
-  end
-
-  # GET /usbs/1 or /usbs/1.json
-  def show; end
-
-  # GET /usbs/new
-  def new
-    @usb = Usb.new
-  end
-
-  def set_title
-     @page_title = "USB Devices"
-  end
-
-  # GET /usbs/1/edit
-  def edit; end
-
-  # POST /usbs or /usbs.json
-  def create
-    @usb = Usb.new(usb_params)
-
-    respond_to do |format|
-      if @usb.save
-        format.html { redirect_to usb_url(@usb), notice: 'Usb was successfully created.' }
-        format.json { render :show, status: :created, location: @usb }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @usb.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /usbs/1 or /usbs/1.json
@@ -52,17 +22,12 @@ class UsbsController < ApplicationController
     end
   end
 
-  # DELETE /usbs/1 or /usbs/1.json
-  def destroy
-    @usb.destroy
-
-    respond_to do |format|
-      format.html { redirect_to usbs_url, notice: 'Usb was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
 
   private
+
+  def set_title
+     @page_title = "USB Devices"
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_usb
