@@ -5,7 +5,7 @@ class ReadArduinoJob < ApplicationJob
   before_perform :log
 
   def perform( usb )
-      schedule if usb.connected 
+      schedule usb if usb.connected 
   end
  
   private
@@ -14,8 +14,8 @@ class ReadArduinoJob < ApplicationJob
     logger.info 'Reading Arduino'
   end
 
-  def schedule
-    ReadArduinoJob.set(wait: 10.seconds).perform_later
+  def schedule usb 
+    ReadArduinoJob.set(wait: 10.seconds).perform_later usb
   end
 
 end
