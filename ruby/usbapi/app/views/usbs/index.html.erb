@@ -6,6 +6,7 @@
     <table class="styled-table">
       <thead>
            <tr>
+            <th>ID</th>
             <th>Label</th>
             <th>Address</th>
             <th>Serial Number</th>
@@ -14,10 +15,12 @@
       </thead>
       <% @usbs.each do |usb| %>
         <tbody>
-          <tr><td><%= usb.label %></td>
-              <td><%= usb.address %></td>
-              <td><%= usb.serialnumber %></td>
-              <td> <%= link_to connecticon( usb ) , toggle_path(:id => usb.id) %>
+          <tr>
+            <td><%= usb.id %></td>
+            <td><%= usb.label %></td>
+            <td><%= usb.address %></td>
+            <td><%= usb.serialnumber %></td>
+            <td> <%= link_to connecticon( usb ) , toggle_path(:id => usb.id) %>
           </tr>
         </tbody>
       <% end %>

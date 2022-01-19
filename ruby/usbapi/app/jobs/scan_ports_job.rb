@@ -2,8 +2,8 @@
 
 class ScanPortsJob < ApplicationJob
   queue_as :default
-  before_perform :remove
-  after_perform  :schedule
+  before_perform :before_actions
+  after_perform  :after_actions
 
   def perform(*_args)
     record
@@ -11,15 +11,28 @@ class ScanPortsJob < ApplicationJob
 
   private
 
+  def before_actions
+    Usb.arduinos.each do |usb|
+       remove usb
+       schedule_readers usb if usb.connected
+    end
+  end
+
+  def after_actions
+     schedule
+  end
+
+  def schedule_readers usb
+    ReadArduinoJob.schedule usb 
+  end
+
   def schedule
     ScanPortsJob.set(wait: 10.seconds).perform_later
   end
 
-  def remove
-    Usb.arduinos.each do |dev|
-      disconnect dev if Boards.not_connected? dev.serialnumber
-      logger.info "Device disconnected #{dev.label}" if dev.changed?
-    end
+  def remove usb
+      disconnect usb if Boards.not_connected? usb.serialnumber
+      logger.info "Device disconnected #{usb.label}" if usb.changed?
   end
 
   def record

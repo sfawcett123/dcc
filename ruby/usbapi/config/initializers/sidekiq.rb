@@ -5,7 +5,7 @@ if defined?(Sidekiq)
         Sidekiq::RetrySet.new.clear
         Sidekiq::ScheduledSet.new.clear
         already_scheduled = Sidekiq::ScheduledSet.new.any? {|job| job.klass == "ScanPortsJob" }
-        ScanPortsJob.perform_now # unless already_scheduled
+        ScanPortsJob.perform_now unless already_scheduled
       end
     end
 end
