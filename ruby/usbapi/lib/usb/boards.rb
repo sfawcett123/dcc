@@ -23,7 +23,7 @@ class Boards < OpenStruct
     end
 
     def not_connected?(serialno)
-      all.select(&:attached_board?).select { |b| b.port.properties.serialNumber = serialno }.empty?
+      all.select(&:attached_board?).select { |b| b.port.properties.serialNumber == serialno }.empty?
     end
   end
 end

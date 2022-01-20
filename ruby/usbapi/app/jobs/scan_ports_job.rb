@@ -13,8 +13,8 @@ class ScanPortsJob < ApplicationJob
 
   def before_actions
     Usb.arduinos.each do |usb|
-       remove usb
-       schedule_readers usb if usb.connected
+      remove usb
+      schedule_readers usb if usb.connected
     end
   end
 
@@ -32,7 +32,6 @@ class ScanPortsJob < ApplicationJob
 
   def remove usb
       disconnect usb if Boards.not_connected? usb.serialnumber
-      logger.info "Device disconnected #{usb.label}" if usb.changed?
   end
 
   def record
@@ -64,9 +63,11 @@ class ScanPortsJob < ApplicationJob
     end
   end
 
-  def disconnect(dev)
-    dev.serialnumber = nil
-    dev.connected = false
-    dev.save
+  def disconnect(usb)
+    logger.info "Disconnecting #{usb.label}"
+    usb.serialnumber = nil
+    usb.connected = false
+    logger.info "Device disconnected #{usb.label}" if usb.changed?
+    usb.save
   end
 end
