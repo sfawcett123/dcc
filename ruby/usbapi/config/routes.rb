@@ -4,7 +4,10 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
-  get 'roles', to: 'roles#index'
+  namespace :roles do
+     get 'list', to: 'list#index'
+     patch 'role/:role/edit', to: 'roles#edit'
+  end
 
   get 'arduinos', to: 'arduinos#index'
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class RolesController < ApplicationController
+class Roles::ListController < ApplicationController
   before_action :set_role, only: %i[show edit update destroy]
   before_action :set_title, only_member_actions: true
 

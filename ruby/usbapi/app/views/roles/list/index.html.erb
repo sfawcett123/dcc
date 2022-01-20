@@ -5,11 +5,18 @@
 <div id="roles" >
     <table class="styled-table">
       <thead>
-           <tr><th>Name</th><th>Path</th></tr>
+           <tr><th>Name</th>
+               <th>Path</th>
+               <th></th>
+           </tr>
       </thead>
       <% @roles.each do |role| %>
         <tbody>
-          <tr><td><%= role.name %></td><td><%= role.path %></td></tr>
+          <tr>
+            <td><%= role.name %></td>
+            <td><%= role.path %></td>
+            <td><%= editicon  %></td>
+          </tr>
         </tbody>
       <% end %>
     </table>
