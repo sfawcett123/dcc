@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   namespace :roles do
      get 'list', to: 'list#index'
      patch 'role/:role/edit', to: 'roles#edit'
+#     get 'create', to: 'build#create'
+#     get 'show', to: 'build#show'
+     resources :build
   end
 
   get 'arduinos', to: 'arduinos#index'

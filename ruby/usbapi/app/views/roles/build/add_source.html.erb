@@ -1,0 +1,6 @@
+<h2>Thanks for signing up </h2>
+<%= form_for(@role, :url => wizard_path, :method => :put) do |f| %>
+  <%= f.text_field :name, :placeholder => 'Role Name' %>
+  <%= f.submit 'Next', :class => 'btn btn-primary' %>
+<% end %>
+<%= link_to 'skip', next_wizard_path %>
