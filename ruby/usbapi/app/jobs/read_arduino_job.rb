@@ -1,26 +1,18 @@
 # frozen_string_literal: true
 
-require 'rubyserial'
-
 class ReadArduinoJob < ApplicationJob
   queue_as :default
   before_perform :log
 
   def perform( usb )
-    ser = Serial.new(usb.address )
-    response = ser.read( 1024 )
-    response.chomp!
-    puts "========================================================="
-    puts "#{response}"
-    puts "========================================================="
-
+    ser = SerialPort.new(usb)
+    response = ser.read 
     ReadArduinoJob.schedule usb if usb.connected 
   end
 
   class << self
 
      def schedule usb 
-       logger.info "Scheduling Arduino Schedule:[#{reschedule( usb )}] Connected:[#{usb.connected}] "
        ReadArduinoJob.set(wait: 10.seconds).perform_later( usb ) if usb.connected and reschedule(usb) 
      end
 
