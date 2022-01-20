@@ -1,0 +1,9 @@
+<%= stylesheet_link_tag "table", "data-turbo-track": "reload" %>
+
+<p style="color: green"><%= notice %></p>
+
+<table>
+<% @messages.each do | message | %>
+    <tr><td> <%=message %> </td></tr>
+<% end %>
+</table>

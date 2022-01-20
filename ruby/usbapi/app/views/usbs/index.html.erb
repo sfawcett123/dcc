@@ -21,6 +21,8 @@
             <td><%= usb.address %></td>
             <td><%= usb.serialnumber %></td>
             <td> <%= link_to connecticon( usb ) , toggle_path(:id => usb.id) %>
+                 <%= link_to serialnumbericon   , serialnumber_path(:serialnumber => usb.serialnumber) %>
+                 </td>
           </tr>
         </tbody>
       <% end %>
