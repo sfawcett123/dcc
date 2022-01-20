@@ -19,19 +19,19 @@ class ScanPortsJob < ApplicationJob
   end
 
   def after_actions
-     schedule
+    schedule
   end
 
-  def schedule_readers usb
-    ReadArduinoJob.schedule usb 
+  def schedule_readers(usb)
+    ReadArduinoJob.schedule usb
   end
 
   def schedule
     ScanPortsJob.set(wait: 10.seconds).perform_later
   end
 
-  def remove usb
-      disconnect usb if Boards.not_connected? usb.serialnumber
+  def remove(usb)
+    disconnect usb if Boards.not_connected? usb.serialnumber
   end
 
   def record

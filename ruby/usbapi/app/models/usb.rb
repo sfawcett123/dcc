@@ -6,7 +6,7 @@ class Usb < ApplicationRecord
   end
 
   def global_id
-    "gid://usbapi/#{self.class.name}/#{self.id}"
+    "gid://usbapi/#{self.class.name}/#{id}"
   end
 
   class << self
