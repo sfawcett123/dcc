@@ -20,20 +20,26 @@ class ReadArduinoJob < ApplicationJob
   class << self
 
      def schedule usb 
-       logger.info "Scheduling Arduino [#{reschedule( usb )}]"
-       ReadArduinoJob.set(wait: 10.seconds).perform_later( usb ) if reschedule(usb) 
+       logger.info "Scheduling Arduino Schedule:[#{reschedule( usb )}] Connected:[#{usb.connected}] "
+       ReadArduinoJob.set(wait: 10.seconds).perform_later( usb ) if usb.connected and reschedule(usb) 
      end
 
      # Reschedule if there are no occurances in the queue
      def reschedule( usb )
-        queue = Sidekiq::Queue.new("default")
-        logger.info "#{queue.count} jobs in #{queue.name} queue" 
+        queue = Sidekiq::ScheduledSet.new
         queue.each do |job|
-             logger.info "Looking at #{job.args[0]['job_class']} == #{self.class.name}"
-             return false if job.args[0]['job_class'] == self.class.name
+             return false  if samejob(job) && sameusb(job , usb) 
         end
         true
      end
+
+     def samejob( job )
+       job.args[0]['job_class'] == self.name ? true : false
+     end
+ 
+     def sameusb( job , usb )
+       job.args[0]['arguments'][0]['_aj_globalid'] == usb.global_id ? true : false
+     end 
   end
 
   private
@@ -41,7 +47,5 @@ class ReadArduinoJob < ApplicationJob
   def log
     logger.info "Reading Arduino"
   end
-
-
 
 end

@@ -5,6 +5,10 @@ class Usb < ApplicationRecord
     @connected
   end
 
+  def global_id
+    "gid://usbapi/#{self.class.name}/#{self.id}"
+  end
+
   class << self
     def arduinos
       all.select(&:serialnumber)
