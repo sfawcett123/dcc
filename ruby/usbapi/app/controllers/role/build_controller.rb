@@ -12,17 +12,17 @@ class Role::BuildController < ApplicationController
      when :sketch_source
          logger.info "SOURCE"
      end
-     render_wizard @role
+     render_wizard 
   end
 
   def update
-     logger.info "UPDATE #{params[:name]}"
-     @role.update_attributes(params[:name])
-     render_wizard @role
+     logger.info "Update #{params[:role_id]}"
+     @role.update( :name => params[:name])
+     render_wizard @role 
   end
 
   def finish_wizard_path
-    roles_list_path
+    roles_path
   end
 
   private

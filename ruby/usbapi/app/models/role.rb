@@ -5,4 +5,6 @@ class Role < ApplicationRecord
     %w(name_role sketch_source)
   end
 
+   attr_accessor :form_step
+
 end
