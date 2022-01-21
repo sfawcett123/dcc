@@ -5,7 +5,7 @@ class RolesController < ApplicationController
   before_action :set_title, only_member_actions: true
 
   def index
-    @roles = Role.all
+    @roles = ::Role.all
   end
 
   def set_title

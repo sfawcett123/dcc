@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Role
+module Editrole
   class BuildController < ApplicationController
     include Wicked::Wizard
     before_action :set_role, only: %i[show update]

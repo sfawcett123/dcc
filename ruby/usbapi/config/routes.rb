@@ -5,7 +5,7 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
 
    resources :roles, only: [:show , :index] do
-         resources :build, only: [:show, :update], controller: 'role/build'
+         resources :build, only: [:show, :update], controller: 'editrole/build'
    end
 
   get 'arduinos', to: 'arduinos#index'
