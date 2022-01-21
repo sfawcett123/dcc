@@ -2,9 +2,8 @@
 
 class Role < ApplicationRecord
   cattr_accessor :form_steps do
-    %w(name_role sketch_source)
+    %w[name_role sketch_source]
   end
 
-   attr_accessor :form_step
-
+  attr_accessor :form_step
 end

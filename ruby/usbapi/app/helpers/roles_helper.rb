@@ -6,5 +6,4 @@ module RolesHelper
   def editicon
     EDIT_ICON.html_safe
   end
-
 end
