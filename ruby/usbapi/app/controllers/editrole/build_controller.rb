@@ -33,7 +33,7 @@ module Editrole
     end
 
     def roles_params(step)
-      permitted_attributes = [:name]
+      permitted_attributes = [:name, :path]
       params.require(:role).permit(permitted_attributes).merge(form_step: step)
     end
   end
