@@ -1,9 +1,7 @@
 class Role::BuildController < ApplicationController
   include Wicked::Wizard
-
   before_action :set_role, only: %i[show update ]
-
-  steps :name_role, :sketch_source
+  steps *Role.form_steps 
 
   def show
      case step
@@ -16,8 +14,7 @@ class Role::BuildController < ApplicationController
   end
 
   def update
-     logger.info "Update #{params[:role_id]}"
-     @role.update( :name => params[:name])
+     @role.update( roles_params(step))
      render_wizard @role 
   end
 
@@ -31,4 +28,10 @@ class Role::BuildController < ApplicationController
   def set_role
     @role = Role.find(params[:role_id])
   end
+
+  def roles_params(step)
+    permitted_attributes = [:name]
+    params.require(:role).permit(permitted_attributes).merge(form_step: step)
+  end
+
 end
