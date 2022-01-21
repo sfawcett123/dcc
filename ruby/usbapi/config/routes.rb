@@ -4,10 +4,9 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
-  namespace :roles do
-     get 'list', to: 'list#index'
-     resources :build
-  end
+   resources :roles, only: [:show , :index] do
+         resources :build, only: [:show, :update], controller: 'role/build'
+   end
 
   get 'arduinos', to: 'arduinos#index'
 
@@ -17,4 +16,6 @@ Rails.application.routes.draw do
   get 'data/:serialnumber/list', to: 'redis#list' , as: 'serialnumber'
 
   mount Sidekiq::Web => '/sidekiq'
+
+  root to: 'arduinos#index'
 end

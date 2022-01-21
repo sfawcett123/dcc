@@ -1,4 +1,4 @@
-class Roles::BuildController < ApplicationController
+class Role::BuildController < ApplicationController
   include Wicked::Wizard
 
   before_action :set_role, only: %i[show update ]
@@ -12,10 +12,12 @@ class Roles::BuildController < ApplicationController
      when :sketch_source
          logger.info "SOURCE"
      end
-    render_wizard 
+     render_wizard @role
   end
 
   def update
+     logger.info "UPDATE #{params[:name]}"
+     @role.update_attributes(params[:name])
      render_wizard @role
   end
 

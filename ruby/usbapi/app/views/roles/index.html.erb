@@ -16,7 +16,7 @@
             <td><%= role.name %></td>
             <td><%= role.path %></td>
             <td>
-                  <%= link_to editicon , roles_build_path( :role_id => role.id , :id => 'name_role' ) %>
+                <%= link_to editicon , role_path( :id => role.id )  %>
             </td>
           </tr>
         </tbody>

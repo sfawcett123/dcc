@@ -1,2 +1,8 @@
 <h2>Name Role</h2>
+
+<%= form_for(@role, :url => wizard_path, :method => :put) do |f| %>
+  <%= f.text_field :name, :placeholder => "Name" %>
+  <%= f.submit 'Next', :class => 'btn btn-primary' %>
+<% end %>
+
 <%= link_to 'skip', next_wizard_path( :role_id => @role.id) %>
