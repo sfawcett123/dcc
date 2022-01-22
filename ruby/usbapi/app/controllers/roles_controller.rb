@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RolesController < ApplicationController
-  before_action :set_role, only: [:show]
+  before_action :set_role, only: [:show, :destroy]
   before_action :set_title, only_member_actions: true
 
   def index
@@ -20,6 +20,13 @@ class RolesController < ApplicationController
 
   def show
     redirect_to role_build_path(@role, Role.form_steps.first)
+  end
+
+  # DELETE /roles/1 or /roles/1.json
+  def destroy
+    @role.destroy
+    @role.save( validate: false )
+    redirect_to roles_path
   end
 
   private

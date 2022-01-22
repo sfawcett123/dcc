@@ -4,19 +4,19 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
-   resources :roles, only: [  :show , :index] do
+   resources :roles, only: [ :destroy,  :show , :index] do
          resources :build, only: [:show, :update], controller: 'editrole/build'
    end
-   get '/role/create', to: 'roles#create' , as: 'create_role'
+   get 'role/create', to: 'roles#create' , as: 'create_role'
 
-  get 'arduinos', to: 'arduinos#index'
+   get 'arduinos', to: 'arduinos#index'
 
-  get 'usbs', to: 'usbs#index'
-  get 'usb/:id/toggle', to: 'usbs#toggle' , as: 'toggle'
+   get 'usbs', to: 'usbs#index'
+   get 'usb/:id/toggle', to: 'usbs#toggle' , as: 'toggle'
 
-  get 'data/:serialnumber/list', to: 'redis#list' , as: 'serialnumber'
+   get 'data/:serialnumber/list', to: 'redis#list' , as: 'serialnumber'
 
-  mount Sidekiq::Web => '/sidekiq'
+   mount Sidekiq::Web => '/sidekiq'
 
-  root to: 'arduinos#index'
+   root to: 'arduinos#index'
 end

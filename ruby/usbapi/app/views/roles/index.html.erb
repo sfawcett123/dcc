@@ -7,7 +7,7 @@
       <thead>
            <tr><th>Name</th>
                <th>Path</th>
-               <th></th>
+               <th style="width: 200px;"></th>
            </tr>
       </thead>
       <% @roles.each do |role| %>
@@ -16,7 +16,13 @@
             <td><%= role.name %></td>
             <td><%= role.path %></td>
             <td>
-                <%= link_to editicon , role_path( :id => role.id )  %>
+                <div class="button_bar">
+                <%= button_to editicon   , role_path( :id => role.id )  , { :method => :get    , form_class: 'form', class: 'button'}%>
+                </div>
+                
+                <div class="button_bar">
+                <%= button_to deleteicon , role_path( :id => role.id )  , { :method => :delete , form_class: 'form', class: 'button'} %>
+                </div>
             </td>
           </tr>
         </tbody>
