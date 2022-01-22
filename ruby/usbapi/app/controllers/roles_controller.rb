@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RolesController < ApplicationController
-  before_action :set_role, only: %i[show]
+  before_action :set_role, only: [:show]
   before_action :set_title, only_member_actions: true
 
   def index
@@ -10,6 +10,12 @@ class RolesController < ApplicationController
 
   def set_title
     @page_title = 'ROLES'
+  end
+
+  def create
+    @role = Role.new
+    @role.save( validate: false )
+    redirect_to role_build_path(@role, Role.form_steps.first)
   end
 
   def show

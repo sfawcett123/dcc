@@ -1,9 +1,0 @@
-<h2>Sketch Source File</h2>
-
-<%= form_for(@role, :url => wizard_path, :method => :put) do |f| %>
-  <%= f.file_field( :path) %>
-
-  <%= f.submit 'Next', :class => 'btn btn-primary' %>
-<% end %>
-
-<%= link_to 'skip', next_wizard_path %>
