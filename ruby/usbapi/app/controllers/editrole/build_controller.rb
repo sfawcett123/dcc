@@ -4,14 +4,15 @@ module Editrole
   class BuildController < ApplicationController
     include Wicked::Wizard
     before_action :set_role, only: %i[show update]
+    before_action :populate_sketches
     steps(*Role.form_steps)
 
     def show
       case step
       when :name_role
-        logger.info 'ROLE'
+        @page_title = 'ROLE'
       when :sketch_source
-        logger.info 'SOURCE'
+        @page_title  = 'SOURCE'
       end
       render_wizard
     end
@@ -30,6 +31,10 @@ module Editrole
     # Use callbacks to share common setup or constraints between actions.
     def set_role
       @role = Role.find(params[:role_id])
+    end
+
+    def populate_sketches
+      @sketchs = Sketch.all
     end
 
     def roles_params(step)

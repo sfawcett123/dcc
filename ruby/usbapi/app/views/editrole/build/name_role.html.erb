@@ -19,8 +19,11 @@ Please enter some details about the role.
     </div>
 
     <div>
-      <%= f.label :path %>
-      <%= f.file_field( :path) %>
+      <% @sketchs.each do |sketch| %>
+        <%= f.radio_button :path , sketch['path'] %>
+        <%= f.label sketch['path'] %>
+        </br>
+      <% end %>
     </div>
 
     <div>

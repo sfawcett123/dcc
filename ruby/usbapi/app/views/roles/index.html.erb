@@ -6,7 +6,7 @@
     <table class="styled-table">
       <thead>
            <tr><th>Name</th>
-               <th>Path</th>
+               <th>Sketch</th>
                <th style="width: 200px;"></th>
            </tr>
       </thead>
@@ -14,7 +14,7 @@
         <tbody>
           <tr>
             <td><%= role.name %></td>
-            <td><%= role.path.class %></td>
+            <td><%= role.path %></td>
             <td>
                 <div class="button_bar">
                 <%= button_to editicon   , role_path( :id => role.id )  , { :method => :get    , form_class: 'form', class: 'button'}%>
