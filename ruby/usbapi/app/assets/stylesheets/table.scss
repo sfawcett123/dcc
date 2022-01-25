@@ -1,4 +1,4 @@
-@import "common.css";
+@import "common.scss";
 
 .styled-div {
   /*  border-style: solid; */
@@ -24,14 +24,14 @@
 .styled-table td {
     font-size: 18px;
     padding: 12px 15px;
-    border-left:solid var(--border-color) 1px;
-    border-top:solid var(--border-color) 1px;
+    border-left:solid $border-color 1px;
+    border-top:solid $border-color 1px;
 }
 
 .styled-table th {
     font-weight: lighter;
-    color: var(--text-color);
-    background-color: var(--main-color);
+    color: $text-color;
+    background-color: $main-color;
     border-top: none;
 }
 

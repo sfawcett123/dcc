@@ -5,6 +5,7 @@ module Editrole
     include Wicked::Wizard
     before_action :set_role, only: %i[show update]
     before_action :populate_sketches
+    before_action :set_title
     steps(*Role.form_steps)
 
     def show
@@ -31,6 +32,10 @@ module Editrole
     # Use callbacks to share common setup or constraints between actions.
     def set_role
       @role = Role.find(params[:role_id])
+    end
+
+    def set_title
+      @page_title = "Edit Role"
     end
 
     def populate_sketches

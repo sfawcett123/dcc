@@ -17,11 +17,11 @@
             <td><%= role.path %></td>
             <td>
                 <div class="button_bar">
-                <%= button_to editicon   , role_path( :id => role.id )  , { :method => :get    , form_class: 'form', class: 'button'}%>
+                <%= button_to editicon   , role_path( :id => role.id )  , { :method => :get    }%>
                 </div>
 
                 <div class="button_bar">
-                <%= button_to deleteicon , role_path( :id => role.id )  , { :method => :delete , form_class: 'form', class: 'button'} %>
+                <%= button_to deleteicon , role_path( :id => role.id )  , { :method => :delete } %>
                 </div>
             </td>
           </tr>
