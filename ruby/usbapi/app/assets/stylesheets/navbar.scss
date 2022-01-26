@@ -60,7 +60,7 @@
 
 .nav-links, .logo {
     text-decoration: none;
-    color: $text-color;
+    color: $background-color;
 }
 
 .main-nav li {
@@ -69,7 +69,7 @@
 }
 
 .nav-icon   {
-  color: $text-color !important;
+  color: $background-color !important;
   background-color: inherit;
   line-height: 40px;
   padding: 0;

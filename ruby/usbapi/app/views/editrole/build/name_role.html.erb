@@ -1,6 +1,5 @@
-<%= stylesheet_link_tag "forms", "data-turbo-track": "reload" %>
 
-Please enter some details about the role:
+<%= stylesheet_link_tag "forms" %>
 
 <%= form_for @role, method: :put, url: wizard_path do |f| %>
   <% if f.object.errors.any? %>
@@ -11,18 +10,16 @@ Please enter some details about the role:
     </div>
   <% end %>
 
-  <fieldset>
+  <fieldset class="radio_group" >
 
     <div class="radio_group">
+      <h2>Please enter some details about the role</h2> </br>
       <%= f.label :name %>
-      <%= f.text_field :name, :placeholder => "Name" %>
+      <%= f.text_field :name, :placeholder => "Name" , :class => "form-field"%>
     </div>
 
     <div class="radio_group">
-      Choose a sketch for this role
-    </div>
-
-    <div class="radio_group">
+      <h2>Choose a sketch</h2> </br>
       <% @sketchs.each do |sketch| %>
         <%= f.label sketch['path'] %>
         <%= f.radio_button :path , sketch['path'] %>
@@ -31,7 +28,7 @@ Please enter some details about the role:
     </div>
 
     <div class="radio_group">
-      <%= f.submit 'Next Step' %>
+      <%= f.submit 'Next Step' , :class => "button" %>
     </div>
   </fieldset>
 <% end %>

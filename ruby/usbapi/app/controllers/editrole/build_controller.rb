@@ -13,7 +13,7 @@ module Editrole
       when :name_role
         @page_title = 'ROLE'
       when :sketch_source
-        @page_title  = 'SOURCE'
+        @page_title = 'SOURCE'
       end
       render_wizard
     end
@@ -35,7 +35,7 @@ module Editrole
     end
 
     def set_title
-      @page_title = "Edit Role"
+      @page_title = 'Edit Role'
     end
 
     def populate_sketches
@@ -43,10 +43,8 @@ module Editrole
     end
 
     def roles_params(step)
-      permitted_attributes = Role.attributes_for_step( step )
+      permitted_attributes = Role.attributes_for_step(step)
       params.require(:role).permit(permitted_attributes).merge(form_step: step)
     end
-
   end
-
 end

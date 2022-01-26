@@ -1,4 +1,5 @@
-<%= stylesheet_link_tag "table", "data-turbo-track": "reload" %>
+
+<%= stylesheet_link_tag    "table", :media => "all" %>
 
 <p style="color: green"><%= notice %></p>
 
@@ -16,12 +17,9 @@
             <td><%= role.name %></td>
             <td><%= role.path %></td>
             <td>
-                <div class="button_bar">
-                <%= button_to editicon   , role_path( :id => role.id )  , { :method => :get    }%>
-                </div>
-
-                <div class="button_bar">
-                <%= button_to deleteicon , role_path( :id => role.id )  , { :method => :delete } %>
+                <div class="styled-button-bar">
+                    <%= button_to editicon   , role_path( :id => role.id )  , { :method => :get     , :class => "styled-button" } %>
+                    <%= button_to deleteicon , role_path( :id => role.id )  , { :method => :delete  , :class => "styled-button" }%>
                 </div>
             </td>
           </tr>

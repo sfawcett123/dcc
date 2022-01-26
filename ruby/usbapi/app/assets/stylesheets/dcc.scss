@@ -4,12 +4,7 @@
 body {
   font-family:  Helvetica, sans-serif;
   font-size: 19px;
-  background-color: $body-color;
-}
-
-.button_bar {
-    padding-right: 5px;
-    float: left;
+  background-color: $background-color;
 }
 
 .footer {
@@ -17,8 +12,8 @@ body {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: $main-color;
-    color: $text-color;
+    background-color: $background-color;
+    color: $main-color;
     text-align: center;
  }
 
