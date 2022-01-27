@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module RolesHelper
-  EDIT_ICON = "<i style='color: green;'class='fa fa-cog'></i>"
-  DELETE_ICON = "<i style='color: red;'class='fa fa-trash'></i>"
+  EDIT_ICON = "<i class='fa fa-cog'></i>"
+  DELETE_ICON = "<i class='fa fa-trash'></i>"
 
   def editicon
     EDIT_ICON.html_safe

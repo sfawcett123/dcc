@@ -16,24 +16,25 @@
 
   .form-field {
     display: block;
-    width: 100%;
+    position: relative;
+    width: 30%;
     padding: 8px 16px;
     line-height: 25px;
-    font-size: 14px;
+    font-size: 19px;
     font-weight: 500;
     font-family: inherit;
     border-radius: 6px;
     -webkit-appearance: none;
     color: $main-color;
     border: 1px solid $input-color;
-    background: $input-color;
+    background: $background-color;
     transition: border .3s ease;
     &::placeholder {
         color: $input-color;
     }
     &:focus {
-        outline: none;
-        border-color: $highlight-color;
+      content: '';
+      background: $highlight-color;
     }
 }
 
@@ -47,6 +48,7 @@
   text-decoration:none;
   font-family:'Roboto',sans-serif;
   font-weight:300;
+  font-size: 19px;
   color:#FFFFFF;
   background-color: $main-color;
   opacity: 0.5;

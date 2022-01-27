@@ -35,7 +35,7 @@ class Sketch
     end
 
     def directory
-      Settings.sketchs.directory
+      "#{Settings.sketchs.directory}/"
     end
 
     def latest_uri

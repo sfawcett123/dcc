@@ -8,12 +8,14 @@ body {
 }
 
 .footer {
+    font-family:  Helvetica, sans-serif;
+    font-size: 19px;
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: $background-color;
-    color: $main-color;
+    background-color: $main-color;
+    color: $background-color;
     text-align: center;
  }
 

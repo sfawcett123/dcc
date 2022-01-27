@@ -21,8 +21,8 @@
     <div class="radio_group">
       <h2>Choose a sketch</h2> </br>
       <% @sketchs.each do |sketch| %>
-        <%= f.label sketch['path'] %>
         <%= f.radio_button :path , sketch['path'] %>
+        <%= f.label sketch['path'] %>
         </br>
       <% end %>
     </div>

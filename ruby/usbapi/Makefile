@@ -9,7 +9,12 @@ brakeman:
 
 test:	rubocop brakeman
 
+server:
+	rails assets:precompile
+	rails server
+
 run:
+    rails assets:precompile
 	foreman start	
 
 clean:
