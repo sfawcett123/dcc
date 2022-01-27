@@ -2,15 +2,18 @@
 
 
 .styled-button-bar {
-    float: left;
-    display: inline;
     border:solid black 1px;
     width: 100%;
 }
 
 .style-button {
+    border:solid red 1px;
     float: left;
-    display: inline;
+}
+
+.style-form {
+    border:solid green 1px;
+    float: left;
 }
 
 .styled-table {

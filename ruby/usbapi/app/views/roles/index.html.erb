@@ -17,9 +17,9 @@
             <td><%= role.name %></td>
             <td><%= role.path %></td>
             <td>
-                <div class="styled-button-bar">
-                    <%= button_to( editicon   , role_path( :id => role.id )  , method: "get"    , form_class: "styled-button" )%>
-                    <%= button_to( deleteicon , role_path( :id => role.id )  , method: "delete" , form_class: "styled-button" )%>
+                <div class="styled-button-bar" >
+                    <%= button_to( "A"  , role_path( :id => role.id )  , :method => :get    , :class => "styled-button", :form_class => "styled-form" )%>
+                    <%= button_to( "B"  , role_path( :id => role.id )  , :method => :delete , :class => "styled-button", :form_class => "styled-form" )%>
                 </div>
             </td>
           </tr>
