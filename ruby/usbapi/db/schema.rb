@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2022_01_17_122442) do
 
-  create_table "arduinos", force: :cascade do |t|
+  create_table "arduinos", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "serialnumber"
     t.string "pid"
     t.string "vid"
@@ -23,14 +23,14 @@ ActiveRecord::Schema.define(version: 2022_01_17_122442) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "roles", force: :cascade do |t|
+  create_table "roles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "path"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "usbs", force: :cascade do |t|
+  create_table "usbs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "label"
     t.string "address"
     t.string "serialnumber"
