@@ -12,6 +12,8 @@ if ENV['AWS_REGION'] && ENV['AWS_SECRET_ARN']
   secret = get_secret_value_response.secret_string 
   ENV["DB_USERNAME"] = JSON.parse(secret)['username'] 
   ENV["DB_PASSWORD"] = JSON.parse(secret)['password'] 
+  ENV["DB_HOST"]    = JSON.parse(secret)['host'] 
+  ENV["DB_PORT"]    = JSON.parse(secret)['port'] 
   puts "Using #{ENV["DB_USERNAME"]}"
 
 elsif !ENV['AWS_SECRET_ARN']

@@ -4,8 +4,8 @@ default: &default
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %> 
   database: arduino
-  host: terraform-20220201214334113200000001.c50vmmxqsblc.eu-west-2.rds.amazonaws.com
-  port: 3306
+  host:  <%= ENV['DB_HOST'] %> 
+  port:  <%= ENV['DB_PORT'] %> 
 
 development: 
   <<: *default
