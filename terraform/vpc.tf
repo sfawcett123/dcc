@@ -45,3 +45,15 @@ resource "aws_internet_gateway" "gw" {
 
   tags = merge( var.tags , { "Name"  = "Database" } )
 }
+
+data "aws_route_table" "selected" {
+  vpc_id = aws_vpc.main.id
+}
+
+resource "aws_route" "route" {
+  route_table_id = data.aws_route_table.selected.id
+
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id = aws_internet_gateway.gw.id
+
+}
