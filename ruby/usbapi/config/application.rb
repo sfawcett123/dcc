@@ -2,6 +2,25 @@
 
 require_relative 'boot'
 
+# Load env vars before Rails is loaded
+require 'aws-sdk-secretsmanager'
+require 'json'
+
+if ENV['AWS_REGION'] && ENV['AWS_SECRET_ARN']
+  client = Aws::SecretsManager::Client.new(region: ENV['AWS_REGION'])
+  get_secret_value_response = client.get_secret_value(secret_id: ENV['AWS_SECRET_ARN'] )
+  secret = get_secret_value_response.secret_string 
+  ENV["DB_USERNAME"] = JSON.parse(secret)['username'] 
+  ENV["DB_PASSWORD"] = JSON.parse(secret)['password'] 
+  puts "Using #{ENV["DB_USERNAME"]}"
+
+elsif !ENV['AWS_SECRET_ARN']
+  puts "AWS_SECRET_ARN has been set. Secrets will not be loaded from AWS."
+
+elsif !ENV['AWS_REGION']
+  puts "AWS_REGION not set. Secrets will not be loaded from AWS."
+end
+
 require 'rails'
 # Pick the frameworks you want:
 require 'active_model/railtie'

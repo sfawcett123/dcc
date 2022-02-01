@@ -67,6 +67,18 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
     ast (2.4.2)
+    aws-eventstream (1.2.0)
+    aws-partitions (1.551.0)
+    aws-sdk-core (3.125.5)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.525.0)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1.0)
+    aws-sdk-secretsmanager (1.56.0)
+      aws-sdk-core (~> 3, >= 3.125.0)
+      aws-sigv4 (~> 1.1)
+    aws-sigv4 (1.4.0)
+      aws-eventstream (~> 1, >= 1.0.2)
     backport (1.2.0)
     benchmark (0.2.0)
     bindex (0.8.1)
@@ -141,6 +153,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jmespath (1.5.0)
     kramdown (2.3.1)
       rexml
     kramdown-parser-gfm (1.1.0)
@@ -156,6 +169,7 @@ GEM
     mini_portile2 (2.7.1)
     minitest (5.15.0)
     msgpack (1.4.2)
+    mysql2 (0.5.3)
     net-imap (0.2.3)
       digest
       net-protocol
@@ -288,7 +302,6 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     stimulus-rails (1.0.2)
       railties (>= 6.0.0)
     strscan (3.0.1)
@@ -321,6 +334,7 @@ PLATFORMS
   x86_64-darwin-19
 
 DEPENDENCIES
+  aws-sdk-secretsmanager (~> 1)
   bootsnap
   brakeman
   config
@@ -329,6 +343,7 @@ DEPENDENCIES
   foreman
   importmap-rails
   jbuilder
+  mysql2
   puma (~> 5.0)
   rails (~> 7.0.1)
   rails-erd
@@ -342,7 +357,6 @@ DEPENDENCIES
   simplecov
   solargraph
   sprockets-rails
-  sqlite3 (~> 1.4)
   stimulus-rails
   turbo-rails
   tzinfo-data
