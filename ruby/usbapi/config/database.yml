@@ -1,11 +1,11 @@
 default: &default
   adapter: mysql2
   encoding: utf8
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %> 
+  username: <%= ENV['DCC_USERNAME'] %>
+  password: <%= ENV['DCC_PASSWORD'] %> 
   database: arduino
-  host:  <%= ENV['DB_HOST'] %> 
-  port:  <%= ENV['DB_PORT'] %> 
+  host:  <%= ENV['DCC_HOST'] %> 
+  port:  <%= ENV['DCC_PORT'] %> 
 
 development: 
   <<: *default

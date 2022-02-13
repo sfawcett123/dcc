@@ -1,0 +1,13 @@
+{
+  "inputName": "Arduinos",
+  "inputDescription": "Arduino Boards",
+  "inputDefinition": {
+    "attributes": [
+      { "jsonPath": "address" },
+      { "jsonPath": "label" } ,
+      { "jsonPath": "properties.serialNumber" } ,
+      { "jsonPath": "properties.pid" } ,
+      { "jsonPath": "properties.vid" } 
+    ]
+  }
+}

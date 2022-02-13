@@ -14,8 +14,6 @@ Rails.application.routes.draw do
    get 'usbs', to: 'usbs#index'
    get 'usb/:id/toggle', to: 'usbs#toggle' , as: 'toggle'
 
-   get 'data/:serialnumber/list', to: 'redis#list' , as: 'serialnumber'
-
    mount Sidekiq::Web => '/sidekiq'
 
    root to: 'arduinos#index'

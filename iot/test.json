@@ -1,0 +1,9 @@
+{
+   "messages": [
+    {
+        "messageId": "00001",
+	"inputName": "Arduino" ,
+	"payload": "{ \"address\" : \"usbmodem142201\", \"label\": \"usbmodem142201\", \"protocol\": \"serial\", \"protocollabel\": \"Serial Port USB\", \"properties\": { \"pid\": \"0042\", \"serialNumber\": \"959313231323513171B1\", \"vid\": \"2341\" } }"
+    }]
+}
+

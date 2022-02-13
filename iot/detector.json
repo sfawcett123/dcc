@@ -1,0 +1,38 @@
+{
+    "detectorModelDefinition": {
+        "states": [
+            {
+                "stateName": "State_1",
+                "onInput": {
+                    "events": [
+                        {
+                            "eventName": "Trigger",
+                            "condition": "\"$input.Arduino.address\" == \"Brian\"",
+                            "actions": [
+                                {
+                                    "setVariable": {
+                                        "variableName": "Address",
+                                        "value": "$input.Arduino.address "
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "transitionEvents": []
+                },
+                "onEnter": {
+                    "events": []
+                },
+                "onExit": {
+                    "events": []
+                }
+            }
+        ],
+        "initialStateName": "State_1"
+    },
+    "detectorModelDescription": null,
+    "detectorModelName": "Test",
+    "evaluationMethod": "BATCH",
+    "key": null,
+    "roleArn": "arn:aws:iam::977339930940:role/service-role/DCC"
+}

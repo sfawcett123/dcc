@@ -3,6 +3,8 @@ require 'json'
 
 class AWS
 
+  PREFIX = "DCC_"
+
   class << self
     
     def configure 
@@ -10,10 +12,10 @@ class AWS
           client = Aws::SecretsManager::Client.new(region: ENV['AWS_REGION'])
           get_secret_value_response = client.get_secret_value(secret_id: ENV['AWS_SECRET_ARN'] )
           secret = get_secret_value_response.secret_string
-          ENV["DB_USERNAME"] = JSON.parse(secret)['username']
-          ENV["DB_PASSWORD"] = JSON.parse(secret)['password']
-          ENV["DB_HOST"]     = JSON.parse(secret)['host']
-          ENV["DB_PORT"]     = JSON.parse(secret)['port']
+          JSON.parse(secret).keys.each do | k |
+            fk = "#{PREFIX}#{k.upcase}"
+            ENV[ fk ] =  JSON.parse(secret)[k].to_s
+          end
           puts "Secrets will be loaded from AWS."
       elsif !ENV['AWS_SECRET_ARN']
         puts "AWS_SECRET_ARN has been set. Secrets will not be loaded from AWS."      

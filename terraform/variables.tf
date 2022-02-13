@@ -25,7 +25,6 @@ variable "parameter_group_family" {
 # Redis Defaults
 #
 
-
 #
 # Tags
 #

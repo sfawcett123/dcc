@@ -69,11 +69,14 @@ GEM
     ast (2.4.2)
     aws-eventstream (1.2.0)
     aws-partitions (1.551.0)
-    aws-sdk-core (3.125.5)
+    aws-sdk-core (3.125.6)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.525.0)
       aws-sigv4 (~> 1.1)
       jmespath (~> 1.0)
+    aws-sdk-iotevents (1.31.0)
+      aws-sdk-core (~> 3, >= 3.125.0)
+      aws-sigv4 (~> 1.1)
     aws-sdk-secretsmanager (1.56.0)
       aws-sdk-core (~> 3, >= 3.125.0)
       aws-sigv4 (~> 1.1)
@@ -82,9 +85,9 @@ GEM
     backport (1.2.0)
     benchmark (0.2.0)
     bindex (0.8.1)
-    bootsnap (1.9.4)
-      msgpack (~> 1.0)
-    brakeman (5.2.0)
+    bootsnap (1.10.3)
+      msgpack (~> 1.2)
+    brakeman (5.2.1)
     builder (3.2.4)
     choice (0.2.0)
     concurrent-ruby (1.1.9)
@@ -140,9 +143,9 @@ GEM
     foreman (0.87.2)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    i18n (1.8.11)
+    i18n (1.9.1)
       concurrent-ruby (~> 1.0)
-    importmap-rails (1.0.1)
+    importmap-rails (1.0.2)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.5.11)
@@ -166,9 +169,8 @@ GEM
     marcel (1.0.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
-    mini_portile2 (2.7.1)
     minitest (5.15.0)
-    msgpack (1.4.2)
+    msgpack (1.4.4)
     mysql2 (0.5.3)
     net-imap (0.2.3)
       digest
@@ -186,15 +188,12 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
-    nokogiri (1.13.0)
-      mini_portile2 (~> 2.7.0)
-      racc (~> 1.4)
-    nokogiri (1.13.0-x86_64-darwin)
+    nokogiri (1.13.1-x86_64-darwin)
       racc (~> 1.4)
     parallel (1.21.0)
     parser (3.1.0.0)
       ast (~> 2.4.1)
-    puma (5.5.2)
+    puma (5.6.1)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
@@ -233,16 +232,16 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
-    redis (4.5.1)
+    redis (4.6.0)
     regexp_parser (2.2.0)
     reline (0.3.1)
       io-console (~> 0.5)
     reverse_markdown (2.1.1)
       nokogiri
     rexml (3.2.5)
-    rubocop (1.24.1)
+    rubocop (1.25.1)
       parallel (~> 1.10)
-      parser (>= 3.0.0.0)
+      parser (>= 3.1.0.0)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml
@@ -251,11 +250,11 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.15.1)
       parser (>= 3.0.1.1)
-    rubocop-rails (2.13.1)
+    rubocop-rails (2.13.2)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
-    rubocop-rspec (2.7.0)
+    rubocop-rspec (2.8.0)
       rubocop (~> 1.19)
     ruby-graphviz (1.2.5)
       rexml
@@ -270,7 +269,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sidekiq (6.3.1)
+    sidekiq (6.4.0)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
@@ -308,7 +307,7 @@ GEM
     thor (1.2.1)
     tilt (2.0.10)
     timeout (0.2.0)
-    turbo-rails (1.0.0)
+    turbo-rails (1.0.1)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
     tzinfo (2.0.4)
@@ -327,13 +326,13 @@ GEM
       railties (>= 3.0.7)
     yard (0.9.27)
       webrick (~> 1.7.0)
-    zeitwerk (2.5.3)
+    zeitwerk (2.5.4)
 
 PLATFORMS
-  ruby
   x86_64-darwin-19
 
 DEPENDENCIES
+  aws-sdk-iotevents (~> 1)
   aws-sdk-secretsmanager (~> 1)
   bootsnap
   brakeman
@@ -347,7 +346,6 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.1)
   rails-erd
-  redis (~> 4.0)
   rubocop (~> 1.24)
   rubocop-rails
   rubocop-rspec

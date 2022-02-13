@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 require 'rubyserial'
-require 'redis'
 
 class SerialPort < Serial
-  def initialize(usb, url = 'redis:://localhost:6739')
+
+  def initialize(usb)
     @usb = usb
-    redis_connect url
     super(usb.address)
   end
 
@@ -16,7 +15,7 @@ class SerialPort < Serial
 
   def push
     read.each_line do |line|
-      @redis.lpush @usb.serialnumber, line
+      puts  line
     end
   rescue NoMethodError
     nil
@@ -24,8 +23,4 @@ class SerialPort < Serial
 
   private
 
-  def redis_connect(url)
-    uri = URI.parse(url)
-    @redis = Redis.new(host: uri.host, port: uri.port, password: uri.password)
-  end
 end
