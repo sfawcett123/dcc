@@ -47,3 +47,6 @@ Follow the instructions in [Reference](#REF_1) to wire up the LCD Display and te
 |VCC      |VCC | 5v      | Power Supply       |
 |LED+     |A   | 5v (via 220 ohm Resistor     | Backlight Power      |
 |LED-     |K   | GND     | Backlight Ground   |
+
+## Diagram
+![LCD](lcd.png)
