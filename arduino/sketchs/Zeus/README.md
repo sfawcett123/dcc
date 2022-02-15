@@ -1,4 +1,9 @@
-# README
+# Zeus Prototype
+
+## Libraries
+1. [NMRA DCC](https://github.com/mrrwa/NmraDcc)
+1. [Arduino JSON](https://github.com/bblanchon/ArduinoJson)
+1. [Liquid Crystal](https://github.com/arduino-libraries/LiquidCrystal)
 
 ## Setup
 
