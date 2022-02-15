@@ -1,4 +1,5 @@
 #include <LiquidCrystal.h>
+#include <NmraDcc.h>
 #include <Zeus.h>
 
 unsigned long myTime;

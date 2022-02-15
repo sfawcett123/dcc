@@ -1,4 +1,4 @@
-LIBRARIES:=LiquidCrystal ArduinoJson
+LIBRARIES:=LiquidCrystal ArduinoJson NmraDcc
 
 .PHONY: all
 all : $(LIBRARIES)
