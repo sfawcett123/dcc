@@ -1,5 +1,4 @@
 LIBRARIES:=LiquidCrystal ArduinoJson
-BOARD=/dev/cu.usbmodem142301
 
 .PHONY: all
 all : $(LIBRARIES)

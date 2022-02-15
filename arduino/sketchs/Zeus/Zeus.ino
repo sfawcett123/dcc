@@ -15,7 +15,7 @@ void loop() {
   zeus.Read();
 
   lcd.setCursor(0, 0);
-  lcd.print( "rx: "  + str  + "       ");
+  lcd.print( "rx:  Installed ");
 
   lcd.setCursor(0, 1);
   lcd.print( "A:"  + zeus.Address()   );
