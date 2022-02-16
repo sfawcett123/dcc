@@ -10,7 +10,8 @@
 set the BOARD variable manually or use this command
 
 ```
-export BOARD=$( arduino-cli board list --format json | jq -r '.[].port | select( .address |  contains("/dev/cu.usbmodem") ) | .address' )
+export BOARD=$( arduino-cli board list --format json | jq -r '.[] | select( .port.address |  contains("/dev/cu.usbmodem") ) | .port.address' )
+export CORE=$(  arduino-cli board list --format json | jq -r '.[] | select( .port.address |  contains("/dev/cu.usbmodem") ) | .matching_boards[0].fqbn' )
 ```
 
 set up the configuration and import libraries

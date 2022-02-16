@@ -1,5 +1,8 @@
 LIBRARIES:=LiquidCrystal ArduinoJson NmraDcc
 
+BOARD := $(shell arduino-cli board list --format json | jq -r '.[] | select( .port.address |  contains("/dev/cu.usbmodem") ) | .port.address' )
+CORE  := $(shell arduino-cli board list --format json | jq -r '.[] | select( .port.address |  contains("/dev/cu.usbmodem") ) | .matching_boards[0].fqbn' )
+
 .PHONY: all
 all : $(LIBRARIES)
 
@@ -15,10 +18,10 @@ config:
 	grep -qxF 'arduino-cli.yaml' .gitignore || echo 'arduino-cli.yaml' >> .gitignore
 
 compile:
-	arduino-cli compile -b arduino:avr:mega Zeus.ino
+	arduino-cli compile -b $(CORE) Zeus.ino
 
 deploy:
-	arduino-cli upload -b arduino:avr:mega -p $(BOARD)
+	arduino-cli upload -b $(CORE) -p $(BOARD)
 
 define LIBRARY_template
 $(1): $$($(1)_OBJS)
