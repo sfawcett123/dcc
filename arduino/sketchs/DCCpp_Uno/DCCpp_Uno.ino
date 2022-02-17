@@ -164,7 +164,7 @@ DCC++ BASE STATION is configured through the Config.h file that contains all use
 #include "Comm.h"
 #include <LiquidCrystal.h>
 
-const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
+const int rs = 12, en = 11, d4 = 37, d5 = 35, d6 = 33, d7 = 31;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
 void showConfiguration();

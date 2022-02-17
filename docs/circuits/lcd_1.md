@@ -38,10 +38,10 @@ Follow the instructions in [Reference](#REF_1) to wire up the LCD Display and te
 |---------|----|---------|---------|
 |RS       |RS  | 12      | Selects Data or Instruction register  |
 |Enable   |E   | 11      | Starts Data Write  |
-|D4       |D4  | 5       | Data Transfer      |
-|D5       |D5  | 4       | Data Transfer      |
-|D6       |D6  | 3       | Data Transfer      |
-|D7       |D7  | 2       | Data Transfer      |
+|D4       |D4  | 37      | Data Transfer      |
+|D5       |D5  | 35      | Data Transfer      |
+|D6       |D6  | 33      | Data Transfer      |
+|D7       |D7  | 31      | Data Transfer      |
 |RW       |RW  | GND     | Selects Read or Write ( forced to Write ) |
 |VSS      |VSS | GND     | Ground Supply      |
 |VCC      |VCC | 5v      | Power Supply       |
