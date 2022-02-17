@@ -1,11 +1,11 @@
 #include <LiquidCrystal.h>
 #include <NmraDcc.h>
 #include <Zeus.h>
+#include "global.h"
 
 unsigned long myTime;
-const int rs = 12, en = 11, d4 = 37, d5 = 35, d6 = 33, d7 = 31;
 
-LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+LiquidCrystal lcd(LCD_RS, LCD_EN, LCD_D4, LCD_D5, LCD_D6, LCD_D7);
 Zeus          zeus ;
 NmraDcc       Dcc ;
 
